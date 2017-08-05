@@ -1,5 +1,6 @@
 alias ll="ls -lhL"
 alias la="ls -lahL"
+alias l.="ls -ld .*"
 alias cfg='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 bind '"\e[A":history-search-backward'
