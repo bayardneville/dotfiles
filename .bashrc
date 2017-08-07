@@ -12,6 +12,16 @@ export HISTSIZE=10000
 export HISTFILESIZE=5000
 
 # Prompt with timer setup and previous command setup
+normal="\[\e[0m\]"
+red="\[\e[0;31m\]"
+orange="\[\e[1;31m\]"
+green="\[\e[0;32m\]"
+yellow="\[\e[0;33m\]"
+blue="\[\e[0;34m\]"
+magenta="\[\e[0;35m\]"
+violet="\[\e[1;35m\]"
+cyan="\[\e[0;36m\]"
+
 function timer_start {
     timer=${timer:-$SECONDS}
 }
@@ -34,15 +44,26 @@ function timer_stop {
 
 trap 'timer_start' DEBUG
 
-normal="\[\e[0m\]"
-red="\[\e[0;31m\]"
-orange="\[\e[1;31m\]"
-green="\[\e[0;32m\]"
-yellow="\[\e[0;33m\]"
-blue="\[\e[0;34m\]"
-magenta="\[\e[0;35m\]"
-violet="\[\e[1;35m\]"
-cyan="\[\e[0;36m\]"
+function git_color {
+    local STATUS="$(git status --porcelain 2> /dev/null)"
+
+    if [ ${?} -eq 0 ]; then
+        if [[ ! -z ${STATUS} ]]; then
+            if [[ $(echo "${STATUS}" | grep "^. \S\|^?? " -c) == "0" ]]; then
+                PS1+="${yellow}"
+                return
+            fi
+            PS1+="${red}"
+            return
+        fi
+        PS1+="${green}"
+    fi
+}
+
+function git_branch {
+    branch="$(git branch --no-color 2> /dev/null | grep "*" 2> /dev/null)"
+    PS1+="${branch#\*}"
+}
 
 export PROMPT_COMMAND=__prompt_command
 
@@ -58,19 +79,7 @@ function __prompt_command {
 
     PS1+="${timer_show} ${cyan}\A ${yellow}\w"
 
-    status=$(git status --porcelain 2> /dev/null)
-
-    if [ ${?} -eq 0 ]; then
-        PS1+="${green}"
-        if [[ ! -z ${status} ]]; then
-            PS1+="${red}"
-            if [[ $(echo ${status} | grep "^ \|??" -c) -eq 0 ]]; then
-                PS1+="${orange}"
-            fi
-        fi
-        branch=$(git branch --no-color 2> /dev/null | grep "*" 2> /dev/null)
-        PS1+="${branch#\*}"
-    fi
+    git_color && git_branch
 
     PS1+="\n${magenta}\$ ${normal}"
 }
