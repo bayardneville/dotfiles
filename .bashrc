@@ -49,7 +49,7 @@ function git_color {
 
     if [ ${?} -eq 0 ]; then
         if [[ ! -z ${STATUS} ]]; then
-            if [[ $(echo "${STATUS}" | grep "^. \S\|^?? " -c) == "0" ]]; then
+            if [[ $(echo "${STATUS}" | grep "^ \S \S\|^?? " -c) == "0" ]]; then
                 PS1+="${yellow}"
                 return
             fi
@@ -57,7 +57,9 @@ function git_color {
             return
         fi
         PS1+="${green}"
+        return
     fi
+    return 1
 }
 
 function git_branch {
