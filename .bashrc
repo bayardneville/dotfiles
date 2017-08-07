@@ -77,7 +77,7 @@ function __prompt_command {
         PS1+="${red}"
     fi
 
-    PS1+="${timer_show} ${cyan}\A ${yellow}\w"
+    PS1+="${timer_show} ${cyan}\A ${blue}\w"
 
     git_color && git_branch
 
