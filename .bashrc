@@ -49,7 +49,7 @@ function git_color {
 
     if [ ${?} -eq 0 ]; then
         if [[ ! -z ${STATUS} ]]; then
-            if [[ $(echo "${STATUS}" | grep "^ \S \S\|^\(.\)\1 " -c) == "0" ]]; then
+            if [[ $(echo "${STATUS}" | grep "^ \S \S\|^\S\S \S" -c) == "0" ]]; then
                 PS1+="${yellow}"
                 return
             fi
