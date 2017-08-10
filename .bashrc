@@ -86,3 +86,5 @@ function __prompt_command {
     PS1+="\n${magenta}\$ ${normal}"
 }
 
+. ~/.git-completion.bash
+
