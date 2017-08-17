@@ -62,3 +62,6 @@ alias .=source
 alias ll="ls -lh"
 alias la="ls -lAh"
 alias l.="ls -ld .*"
+
+. /usr/local/etc/profile.d/z.sh
+

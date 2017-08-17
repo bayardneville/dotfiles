@@ -87,4 +87,5 @@ function __prompt_command {
 }
 
 . ~/.git-completion.bash
+. /usr/local/etc/profile.d/z.sh
 
