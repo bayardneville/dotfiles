@@ -1,8 +1,8 @@
 set nocompatible
 
-set t_Co=16
-
-syntax on
+syntax enable
+set background=dark
+colorscheme solarized
 
 set backspace=2
 
@@ -17,10 +17,7 @@ set pastetoggle=<F12>
 set showmode
 
 set number
-hi LineNr ctermfg=lightgreen ctermbg=black
 set cursorline
-hi CursorLine cterm=none ctermbg=black
-hi CursorLineNR cterm=bold ctermfg=lightgreen ctermbg=black
 
 set ruler
 set showcmd
@@ -31,8 +28,6 @@ set mouse=a
 set scrolloff=4
 
 set showmatch
-hi MatchParen cterm=none ctermfg=darkgrey ctermbg=red
-
 set incsearch
 set ignorecase
 set smartcase
