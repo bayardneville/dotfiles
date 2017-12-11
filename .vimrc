@@ -1,5 +1,6 @@
 " General
 set nocompatible
+set clipboard=unnamed
 
 " Config editing shortcuts
 nnoremap <leader>ev :vsp $MYVIMRC<CR>
