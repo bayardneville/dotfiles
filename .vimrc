@@ -5,6 +5,7 @@ set nocompatible
 nnoremap <leader>ev :vsp $MYVIMRC<CR>
 nnoremap <leader>eb :vsp ~/.bashrc<CR>
 nnoremap <leader>ez :vsp ~/.zshrc<CR>
+nnoremap <leader>et :vsp ~/.tmux.conf<CR>
 nnoremap <leader>sv :so $MYVIMRC<CR>
 
 " Colorscheme
@@ -55,7 +56,20 @@ set laststatus=2
 set ruler
 set number
 
+"  Navigation
+nnoremap <leader>l :ls<CR>:b<space>
+set path=.,**
+nnoremap <leader>f :find *
+nnoremap <leader>s :sfind *
+nnoremap <leader>v :vert sfind *
+nnoremap <leader>t :tabfind *
 
+nnoremap <leader>F :find <C-R>=expand('%:h').'/*'<CR>
+nnoremap <leader>S :sfind <C-R>=expand('%:h').'/*'<CR>
+nnoremap <leader>V :vert sfind <C-R>=expand('%:h').'/*'<CR>
+nnoremap <leader>T :tabfind <C-R>=expand('%:h').'/*'<CR>
+
+" Unsorted
 set backspace=2
 set mouse=a
 set pastetoggle=<F12>
