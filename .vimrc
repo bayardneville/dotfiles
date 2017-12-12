@@ -1,6 +1,7 @@
 " General
-set nocompatible
 set clipboard=unnamed
+inoremap jk <esc>
+xnoremap jk <esc>
 
 " Config editing shortcuts
 nnoremap <leader>ev :vsp $MYVIMRC<CR>
@@ -17,9 +18,9 @@ syntax enable
 
 " Indentation
 filetype plugin indent on
-autocmd FileType * set softtabstop=2|set shiftwidth=2|set colorcolumn=120
-autocmd FileType python set softtabstop=4|set shiftwidth=4|set colorcolumn=100
 set autoindent
+autocmd FileType * set shiftwidth=2|let &softtabstop=&shiftwidth|set colorcolumn=121
+autocmd FileType python set shiftwidth=4|let &softtabstop=&shiftwidth|set colorcolumn=101
 set expandtab
 set shiftround
 
@@ -65,7 +66,8 @@ nnoremap <leader>V :vert sfind <C-R>=expand('%:h').'/*'<CR>
 nnoremap <leader>T :tabfind <C-R>=expand('%:h').'/*'<CR>
 
 " Unsorted
-set backspace=2
+set backspace=indent,eol,start
+set hidden
 set mouse=a
 set pastetoggle=<F12>
 set scrolloff=4
@@ -77,4 +79,7 @@ if has("mouse_sgr")
 else
   set ttymouse=xterm2
 end
+
+" This is built in so why not? 
+runtime macros/matchit.vim
 
