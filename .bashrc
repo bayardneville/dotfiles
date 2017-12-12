@@ -1,7 +1,16 @@
+# Git tab completion
+if [ -f ~/.git-completion.bash ]; then
+  . ~/.git-completion.bash
+
+  # Tab completion git aliased to g
+  __git_complete g __git_main
+fi
+
 alias ll="ls -lhL"
 alias la="ls -lahL"
 alias l.="ls -ld .*"
-alias cfg='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias g='git'
+alias cfg='g --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 bind '"\e[A":history-search-backward'
 bind '"\e[B":history-search-forward'
