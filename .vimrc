@@ -17,8 +17,8 @@ syntax enable
 
 " Indentation
 filetype plugin indent on
-autocmd FileType * set softtabstop=2|set shiftwidth=2
-autocmd FileType python set softtabstop=4|set shiftwidth=4
+autocmd FileType * set softtabstop=2|set shiftwidth=2|set colorcolumn=120
+autocmd FileType python set softtabstop=4|set shiftwidth=4|set colorcolumn=100
 set autoindent
 set expandtab
 set shiftround
@@ -70,4 +70,11 @@ set mouse=a
 set pastetoggle=<F12>
 set scrolloff=4
 set wildmenu
+
+" Fix mouse interaction with splits in tmux
+if has("mouse_sgr")
+  set ttymouse=sgr
+else
+  set ttymouse=xterm2
+end
 
