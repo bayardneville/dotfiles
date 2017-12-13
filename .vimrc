@@ -21,6 +21,7 @@ filetype plugin indent on
 set autoindent
 
 augroup LanguageSettings
+  autocmd!
   autocmd FileType * set shiftwidth=2|let &softtabstop=&shiftwidth|set colorcolumn=121
   autocmd FileType python set shiftwidth=4|let &softtabstop=&shiftwidth|set colorcolumn=101
 augroup END
