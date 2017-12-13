@@ -1,5 +1,5 @@
 " General
-set clipboard=unnamed
+set clipboard^=unnamed
 inoremap jk <esc>
 xnoremap jk <esc>
 
@@ -20,7 +20,7 @@ syntax enable
 filetype plugin indent on
 set autoindent
 
-augroup FileIndentation
+augroup LanguageSettings
   autocmd FileType * set shiftwidth=2|let &softtabstop=&shiftwidth|set colorcolumn=121
   autocmd FileType python set shiftwidth=4|let &softtabstop=&shiftwidth|set colorcolumn=101
 augroup END
