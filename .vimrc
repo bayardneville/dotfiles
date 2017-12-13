@@ -57,8 +57,9 @@ set ruler
 set number
 
 "  Navigation
-nnoremap <leader>l :ls<CR>:b<space>
 set path=.,**
+nnoremap gb :ls<CR>:b<space>
+nnoremap <leader>b :buffer *
 nnoremap <leader>f :find *
 nnoremap <leader>s :sfind *
 nnoremap <leader>v :vert sfind *
@@ -69,13 +70,17 @@ nnoremap <leader>S :sfind <C-R>=expand('%:h').'/*'<CR>
 nnoremap <leader>V :vert sfind <C-R>=expand('%:h').'/*'<CR>
 nnoremap <leader>T :tabfind <C-R>=expand('%:h').'/*'<CR>
 
+" Wild
+set wildmenu
+set wildmode=list:full
+set wildignorecase
+
 " Unsorted
 set backspace=indent,eol,start
 set hidden
 set mouse=a
 set pastetoggle=<F12>
 set scrolloff=4
-set wildmenu
 
 " Fix mouse interaction with splits in tmux
 if has("mouse_sgr")
