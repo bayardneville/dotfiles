@@ -71,8 +71,9 @@ nnoremap <leader>T :tabfind <C-R>=expand('%:h').'/*'<CR>
 
 " Wild
 set wildmenu
-set wildmode=list:full
+set wildmode=longest:full,full
 set wildignorecase
+set wildignore+=*.pyc
 
 " Unsorted
 set backspace=indent,eol,start
@@ -80,6 +81,7 @@ set hidden
 set mouse=a
 set pastetoggle=<F12>
 set scrolloff=4
+set noswapfile
 
 " Fix mouse interaction with splits in tmux
 if has("mouse_sgr")
