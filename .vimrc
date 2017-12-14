@@ -4,11 +4,11 @@ inoremap jk <esc>
 xnoremap jk <esc>
 
 " Config editing shortcuts
-nnoremap <leader>ev :vsp $MYVIMRC<CR>
-nnoremap <leader>eb :vsp ~/.bashrc<CR>
-nnoremap <leader>ez :vsp ~/.zshrc<CR>
-nnoremap <leader>et :vsp ~/.tmux.conf<CR>
-nnoremap <leader>sv :so $MYVIMRC<CR>
+nnoremap <leader>ev :vsplit $MYVIMRC<CR>
+nnoremap <leader>eb :vsplit ~/.bashrc<CR>
+nnoremap <leader>ez :vsplit ~/.zshrc<CR>
+nnoremap <leader>et :vsplit ~/.tmux.conf<CR>
+nnoremap <leader>sv :source $MYVIMRC<CR>
 
 " Colorscheme
 colorscheme solarized
