@@ -1,7 +1,5 @@
 " General
 set clipboard^=unnamed
-inoremap jk <esc>
-xnoremap jk <esc>
 
 " Config editing shortcuts
 nnoremap <leader>ev :vsplit $MYVIMRC<CR>
