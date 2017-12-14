@@ -27,6 +27,12 @@ augroup END
 set expandtab
 set shiftround
 
+augroup Linting
+  autocmd FileType python setlocal makeprg=flake8
+  autocmd BufWritePost *.py silent make! % | silent redraw!
+  autocmd QuickFixCmdPost [^l]* bo cwindow
+augroup END
+
 " Map space to leader so it still shows up in showcmd
 map <space> \
 
@@ -69,9 +75,13 @@ nnoremap <leader>S :sfind <C-R>=expand('%:h').'/*'<CR>
 nnoremap <leader>V :vert sfind <C-R>=expand('%:h').'/*'<CR>
 nnoremap <leader>T :tabfind <C-R>=expand('%:h').'/*'<CR>
 
+" Autocomplete
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
 " Wild
 set wildmenu
-set wildmode=longest:full,full
+set wildmode=full
 set wildignorecase
 set wildignore+=*.pyc
 
@@ -80,7 +90,6 @@ set backspace=indent,eol,start
 set hidden
 set mouse=a
 set pastetoggle=<F12>
-set scrolloff=4
 set noswapfile
 
 " Fix mouse interaction with splits in tmux
