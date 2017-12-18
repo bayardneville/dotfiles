@@ -17,6 +17,8 @@ syntax enable
 " Indentation
 filetype plugin indent on
 set autoindent
+set expandtab
+set shiftround
 
 augroup Indentation
   autocmd!
@@ -29,9 +31,6 @@ augroup LineLength
     autocmd WinEnter,BufEnter * call clearmatches() | call matchadd('ErrorMsg', '\%101v', -1)
     autocmd WinEnter,BufEnter *.rb call clearmatches() | call matchadd('ErrorMsg', '\%121v', -1)
 augroup END
-
-set expandtab
-set shiftround
 
 augroup Linting
   autocmd FileType python setlocal makeprg=flake8
@@ -65,8 +64,14 @@ set showmode
 set lazyredraw
 set laststatus=2
 set ruler
-set number
 set scrolloff=1
+set number relativenumber
+
+augroup NumberToggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
 
 "  Navigation
 set path=.,**
