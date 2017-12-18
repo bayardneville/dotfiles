@@ -6,7 +6,7 @@ nnoremap <leader>ev :vsplit $MYVIMRC<CR>
 nnoremap <leader>eb :vsplit ~/.bashrc<CR>
 nnoremap <leader>ez :vsplit ~/.zshrc<CR>
 nnoremap <leader>et :vsplit ~/.tmux.conf<CR>
-nnoremap <leader>sv :source $MYVIMRC<CR>
+nnoremap <leader>rv :source $MYVIMRC<CR>
 
 " Colorscheme
 colorscheme solarized
@@ -18,10 +18,16 @@ syntax enable
 filetype plugin indent on
 set autoindent
 
-augroup LanguageSettings
+augroup Indentation
   autocmd!
-  autocmd FileType * set shiftwidth=2|let &softtabstop=&shiftwidth|set colorcolumn=121
-  autocmd FileType python set shiftwidth=4|let &softtabstop=&shiftwidth|set colorcolumn=101
+  autocmd FileType * set shiftwidth=2|let &softtabstop=&shiftwidth
+  autocmd FileType python set shiftwidth=4|let &softtabstop=&shiftwidth
+augroup END
+
+augroup LineLength
+    autocmd!
+    autocmd WinEnter,BufEnter * call clearmatches() | call matchadd('ErrorMsg', '\%101v', -1)
+    autocmd WinEnter,BufEnter *.rb call clearmatches() | call matchadd('ErrorMsg', '\%121v', -1)
 augroup END
 
 set expandtab
@@ -29,7 +35,7 @@ set shiftround
 
 augroup Linting
   autocmd FileType python setlocal makeprg=flake8
-  autocmd BufWritePost *.py silent make! % | silent redraw!
+  autocmd BufWritePost *.py silent make! <afile> | silent redraw!
   autocmd QuickFixCmdPost [^l]* bo cwindow
 augroup END
 
@@ -60,6 +66,7 @@ set lazyredraw
 set laststatus=2
 set ruler
 set number
+set scrolloff=1
 
 "  Navigation
 set path=.,**
@@ -76,6 +83,7 @@ nnoremap <leader>V :vert sfind <C-R>=expand('%:h').'/*'<CR>
 nnoremap <leader>T :tabfind <C-R>=expand('%:h').'/*'<CR>
 
 " Autocomplete
+set complete+=d
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
@@ -84,6 +92,7 @@ set wildmenu
 set wildmode=full
 set wildignorecase
 set wildignore+=*.pyc
+set wildcharm=<C-z>
 
 " Unsorted
 set backspace=indent,eol,start
@@ -102,3 +111,6 @@ end
 " This is built in so why not? 
 runtime macros/matchit.vim
 
+" smooth searching
+cnoremap <expr> <Tab>   getcmdtype() == "/" \|\| getcmdtype() == "?" ? "<CR>/<C-r>/" : "<C-z>"
+cnoremap <expr> <S-Tab> getcmdtype() == "/" \|\| getcmdtype() == "?" ? "<CR>?<C-r>/" : "<S-Tab>"
