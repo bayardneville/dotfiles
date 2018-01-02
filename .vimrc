@@ -34,8 +34,9 @@ augroup END
 
 augroup Linting
   autocmd FileType python setlocal makeprg=flake8
-  autocmd BufWritePost *.py silent make! <afile> | silent redraw!
-  autocmd QuickFixCmdPost [^l]* bo cwindow
+  autocmd FileType ruby setlocal makeprg=rubocop\ --format=emacs
+  autocmd BufWritePost *.py,*.rb silent make! <afile> | silent redraw!
+  autocmd QuickFixCmdPost [^l]* cwindow
 augroup END
 
 " Map space to leader so it still shows up in showcmd
@@ -66,6 +67,8 @@ set laststatus=2
 set ruler
 set scrolloff=1
 set number relativenumber
+set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
+set list
 
 augroup NumberToggle
   autocmd!
@@ -87,6 +90,10 @@ nnoremap <leader>S :sfind <C-R>=expand('%:h').'/*'<CR>
 nnoremap <leader>V :vert sfind <C-R>=expand('%:h').'/*'<CR>
 nnoremap <leader>T :tabfind <C-R>=expand('%:h').'/*'<CR>
 
+" juggling with tags
+nnoremap <leader>j :tjump /
+nnoremap <leader>p :ptjump /
+
 " Autocomplete
 set complete+=d
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -105,6 +112,8 @@ set hidden
 set mouse=a
 set pastetoggle=<F12>
 set noswapfile
+set autoread
+set tags=./tags;,tags;,.tags;
 
 " Fix mouse interaction with splits in tmux
 if has("mouse_sgr")
