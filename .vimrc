@@ -74,7 +74,7 @@ augroup NumberToggle
   autocmd!
   autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
-augroup END
+augroup end
 
 "  Navigation
 set path=.,**
@@ -106,13 +106,19 @@ set wildignorecase
 set wildignore+=*.pyc
 set wildcharm=<C-z>
 
+" File re-loading
+set autoread
+augroup FileReload
+  autocmd!
+  autocmd BufEnter,BufLeave,FocusGained,FocusLost,InsertEnter,InsertLeave * checktime
+augroup end
+
 " Unsorted
 set backspace=indent,eol,start
 set hidden
 set mouse=a
 set pastetoggle=<F12>
 set noswapfile
-set autoread
 set tags=./tags;,tags;,.tags;
 
 " Fix mouse interaction with splits in tmux
