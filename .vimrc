@@ -19,11 +19,13 @@ filetype plugin indent on
 set autoindent
 set expandtab
 set shiftround
+set softtabstop=-1
 
 augroup Indentation
   autocmd!
-  autocmd FileType * set shiftwidth=2|let &softtabstop=&shiftwidth
-  autocmd FileType python set shiftwidth=4|let &softtabstop=&shiftwidth
+  autocmd FileType * setlocal shiftwidth=2
+  autocmd FileType python setlocal shiftwidth=4
+  autocmd FileType make let &l:shiftwidth=&tabstop|setlocal noexpandtab
 augroup END
 
 augroup LineLength
@@ -74,7 +76,7 @@ augroup NumberToggle
   autocmd!
   autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
-augroup end
+augroup END
 
 "  Navigation
 set path=.,**
@@ -111,7 +113,7 @@ set autoread
 augroup FileReload
   autocmd!
   autocmd BufEnter,BufLeave,FocusGained,FocusLost,InsertEnter,InsertLeave * checktime
-augroup end
+augroup END
 
 " Unsorted
 set backspace=indent,eol,start
@@ -128,7 +130,7 @@ else
   set ttymouse=xterm2
 end
 
-" This is built in so why not? 
+" This is built in so why not?
 runtime macros/matchit.vim
 
 " smooth searching
