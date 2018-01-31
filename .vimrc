@@ -1,6 +1,3 @@
-" General
-set clipboard^=unnamed
-
 " Config editing shortcuts
 nnoremap <leader>ev :vsplit $MYVIMRC<CR>
 nnoremap <leader>eb :vsplit ~/.bashrc<CR>
@@ -8,14 +5,17 @@ nnoremap <leader>ez :vsplit ~/.zshrc<CR>
 nnoremap <leader>et :vsplit ~/.tmux.conf<CR>
 nnoremap <leader>rv :source $MYVIMRC<CR>
 
-" Colorscheme
-colorscheme solarized
-set background=dark
-set term=screen-256color
+" Filetpye support
+filetype plugin indent on
 syntax on
 
+" Colorscheme
+colorscheme apprentice
+
+" Included so why not
+runtime macros/matchit.vim
+
 " Indentation
-filetype plugin indent on
 set autoindent
 set expandtab
 set shiftround
@@ -30,8 +30,8 @@ augroup END
 
 augroup LineLength
     autocmd!
-    autocmd WinEnter,BufEnter * call clearmatches() | call matchadd('ErrorMsg', '\%101v', -1)
-    autocmd WinEnter,BufEnter *.rb call clearmatches() | call matchadd('ErrorMsg', '\%121v', -1)
+    autocmd FileType python setlocal colorcolumn=101
+    autocmd FileType ruby setlocal colorcolumn=121
 augroup END
 
 augroup Linting
@@ -85,15 +85,11 @@ nnoremap <leader>s :sfind *
 nnoremap <leader>v :vert sfind *
 nnoremap <leader>t :tabfind *
 
-nnoremap <leader>F :find <C-R>=expand('%:h').'/*'<CR>
-nnoremap <leader>S :sfind <C-R>=expand('%:h').'/*'<CR>
-nnoremap <leader>V :vert sfind <C-R>=expand('%:h').'/*'<CR>
-nnoremap <leader>T :tabfind <C-R>=expand('%:h').'/*'<CR>
-
 nnoremap gb :ls<CR>:buffer<space>
 nnoremap gB :ls<CR>:sbuffer<space>
 nnoremap <leader>b :buffer *
 nnoremap <leader>B :sbuffer *
+nnoremap <BS>      :buffer#<CR>
 
 " juggling with tags
 nnoremap <leader>j :tjump /
@@ -111,7 +107,7 @@ set wildignorecase
 set wildignore+=*.pyc
 set wildcharm=<C-z>
 
-" File re-loading
+" File re-loading on change
 set autoread
 augroup FileReload
   autocmd!
@@ -122,20 +118,9 @@ augroup END
 set backspace=indent,eol,start
 set hidden
 set mouse=a
-set pastetoggle=<F12>
 set noswapfile
 set tags=./tags;,tags;,.tags;
 
-" Fix mouse interaction with splits in tmux
-if has("mouse_sgr")
-  set ttymouse=sgr
-else
-  set ttymouse=xterm2
-end
-
-" This is built in so why not?
-runtime macros/matchit.vim
-
-" smooth searching
+" Tab motion while searching
 cnoremap <expr> <Tab>   getcmdtype() == "/" \|\| getcmdtype() == "?" ? "<CR>/<C-r>/" : "<C-z>"
 cnoremap <expr> <S-Tab> getcmdtype() == "/" \|\| getcmdtype() == "?" ? "<CR>?<C-r>/" : "<S-Tab>"
