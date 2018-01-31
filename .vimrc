@@ -12,7 +12,7 @@ nnoremap <leader>rv :source $MYVIMRC<CR>
 colorscheme solarized
 set background=dark
 set term=screen-256color
-syntax enable
+syntax on
 
 " Indentation
 filetype plugin indent on
@@ -74,14 +74,12 @@ set list
 
 augroup NumberToggle
   autocmd!
-  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * set norelativenumber
 augroup END
 
 "  Navigation
 set path=.,**
-nnoremap gb :ls<CR>:b<space>
-nnoremap <leader>b :buffer *
 nnoremap <leader>f :find *
 nnoremap <leader>s :sfind *
 nnoremap <leader>v :vert sfind *
@@ -91,6 +89,11 @@ nnoremap <leader>F :find <C-R>=expand('%:h').'/*'<CR>
 nnoremap <leader>S :sfind <C-R>=expand('%:h').'/*'<CR>
 nnoremap <leader>V :vert sfind <C-R>=expand('%:h').'/*'<CR>
 nnoremap <leader>T :tabfind <C-R>=expand('%:h').'/*'<CR>
+
+nnoremap gb :ls<CR>:buffer<space>
+nnoremap gB :ls<CR>:sbuffer<space>
+nnoremap <leader>b :buffer *
+nnoremap <leader>B :sbuffer *
 
 " juggling with tags
 nnoremap <leader>j :tjump /
