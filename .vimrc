@@ -1,26 +1,85 @@
-" Config editing shortcuts
-nnoremap <leader>ev :vsplit $MYVIMRC<CR>
-nnoremap <leader>eb :vsplit ~/.bashrc<CR>
-nnoremap <leader>ez :vsplit ~/.zshrc<CR>
-nnoremap <leader>et :vsplit ~/.tmux.conf<CR>
-nnoremap <leader>rv :source $MYVIMRC<CR>
-
-" Filetpye support
+" FILETYPE
 filetype plugin indent on
 syntax on
 
-" Colorscheme
-colorscheme apprentice
-
-" Included so why not
+" why not
 runtime macros/matchit.vim
 
-" Indentation
+" SETTINGS
 set autoindent
+set autoread
+set backspace=indent,eol,start
+set complete+=d
+set cursorline
 set expandtab
+set hidden
+set hlsearch
+set ignorecase
+set incsearch
+set laststatus=2
+set lazyredraw
+set list
+set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
+set mouse=a
+set noswapfile
+set number relativenumber
+set path=.,**
+set ruler
+set scrolloff=1
 set shiftround
+set showcmd
+set showmatch
+set showmode
+set smartcase
 set softtabstop=-1
+set splitbelow
+set splitright
+set tags=./tags;,tags;,.tags;
+set wildcharm=<C-z>
+set wildignore+=tags,.tags,*.pyc
+set wildignorecase
+set wildmenu
+set wildmode=longest:full,full
 
+" MAPPINGS
+
+" scroll visually through wrapped lines
+nnoremap j gj
+nnoremap k gk
+
+map <space> \
+map <leader><space> :nohlsearch<CR>
+
+" config
+nnoremap <leader>ev :vsplit $MYVIMRC<CR>
+nnoremap <leader>eb :vsplit ~/.bashrc<CR>
+nnoremap <leader>rv :source $MYVIMRC<CR>
+
+" file
+nnoremap <leader>f :find *
+nnoremap <leader>s :sfind *
+nnoremap <leader>v :vert sfind *
+nnoremap <leader>t :tabfind *
+
+" buffer
+nnoremap gb :ls<CR>:buffer<space>
+nnoremap gB :ls<CR>:sbuffer<space>
+nnoremap <leader>b :buffer *
+nnoremap <leader>B :sbuffer *
+
+" juggling with tags
+nnoremap <leader>j :tjump /
+nnoremap <leader>p :ptjump /
+
+" Tab through autocomplete
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" Tab through results while searching
+cnoremap <expr> <Tab>   getcmdtype() == "/" \|\| getcmdtype() == "?" ? "<CR>/<C-r>/" : "<C-z>"
+cnoremap <expr> <S-Tab> getcmdtype() == "/" \|\| getcmdtype() == "?" ? "<CR>?<C-r>/" : "<S-Tab>"
+
+" AUTOCOMMANDS
 augroup Indentation
   autocmd!
   autocmd FileType * setlocal shiftwidth=2
@@ -41,86 +100,16 @@ augroup Linting
   autocmd QuickFixCmdPost [^l]* cwindow
 augroup END
 
-" Map space to leader so it still shows up in showcmd
-map <space> \
-
-" More natural split opening
-set splitbelow
-set splitright
-
-" Scroll visually through wrapped lines
-nnoremap j gj
-nnoremap k gk
-
-" Searching
-set incsearch
-set hlsearch
-set smartcase
-set ignorecase
-map <leader><space> :nohlsearch<CR>
-
-" Display
-set showmatch
-set cursorline
-set showcmd
-set showmode
-set lazyredraw
-set laststatus=2
-set ruler
-set scrolloff=1
-set number relativenumber
-set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
-set list
-
 augroup NumberToggle
   autocmd!
   autocmd BufEnter,FocusGained,InsertLeave,WinEnter * set relativenumber
   autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * set norelativenumber
 augroup END
 
-"  Navigation
-set path=.,**
-nnoremap <leader>f :find *
-nnoremap <leader>s :sfind *
-nnoremap <leader>v :vert sfind *
-nnoremap <leader>t :tabfind *
-
-nnoremap gb :ls<CR>:buffer<space>
-nnoremap gB :ls<CR>:sbuffer<space>
-nnoremap <leader>b :buffer *
-nnoremap <leader>B :sbuffer *
-nnoremap <BS>      :buffer#<CR>
-
-" juggling with tags
-nnoremap <leader>j :tjump /
-nnoremap <leader>p :ptjump /
-
-" Autocomplete
-set complete+=d
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-" Wild
-set wildmenu
-set wildmode=full
-set wildignorecase
-set wildignore+=*.pyc
-set wildcharm=<C-z>
-
-" File re-loading on change
-set autoread
 augroup FileReload
   autocmd!
   autocmd BufEnter,BufLeave,FocusGained,FocusLost,InsertEnter,InsertLeave * checktime
 augroup END
 
-" Unsorted
-set backspace=indent,eol,start
-set hidden
-set mouse=a
-set noswapfile
-set tags=./tags;,tags;,.tags;
-
-" Tab motion while searching
-cnoremap <expr> <Tab>   getcmdtype() == "/" \|\| getcmdtype() == "?" ? "<CR>/<C-r>/" : "<C-z>"
-cnoremap <expr> <S-Tab> getcmdtype() == "/" \|\| getcmdtype() == "?" ? "<CR>?<C-r>/" : "<S-Tab>"
+" Colorscheme
+colorscheme apprentice
