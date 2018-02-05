@@ -35,11 +35,12 @@ set softtabstop=-1
 set splitbelow
 set splitright
 set tags=./tags;,tags;,.tags;
+set ttymouse=sgr
 set wildcharm=<C-z>
 set wildignore+=tags,.tags,*.pyc
 set wildignorecase
 set wildmenu
-set wildmode=longest:full,full
+set wildmode=full
 
 " MAPPINGS
 
