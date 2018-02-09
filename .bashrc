@@ -76,7 +76,11 @@ function git_branch {
     PS1+="${branch#\*}"
 }
 
-export PROMPT_COMMAND=__prompt_command
+if [[ $0 == -bash ]]; then
+  export PROMPT_COMMAND="${PROMPT_COMMAND} && __prompt_command"
+else
+  export PROMPT_COMMAND="__prompt_command"
+fi
 
 function __prompt_command {
     local EXIT="${?}"
@@ -95,5 +99,10 @@ function __prompt_command {
     PS1+="\n${magenta}\$ ${normal}"
 }
 
-. ~/.git-completion.bash
+if [ -f ~/.localrc.bash ]; then
+    . ~/.localrc.bash
+fi
 
+if [ -f ~/.git-completion.bash ]; then
+  . ~/.git-completion.bash
+fi
