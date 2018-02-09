@@ -2,8 +2,7 @@
 filetype plugin indent on
 syntax on
 
-" why not
-runtime macros/matchit.vim
+packadd matchit
 
 " SETTINGS
 set autoindent
@@ -40,7 +39,6 @@ set wildcharm=<C-z>
 set wildignore+=tags,.tags,*.pyc
 set wildignorecase
 set wildmenu
-set wildmode=full
 
 " MAPPINGS
 
@@ -68,15 +66,18 @@ nnoremap gB :ls<CR>:sbuffer<space>
 nnoremap <leader>b :buffer *
 nnoremap <leader>B :sbuffer *
 
-" juggling with tags
+" tags
 nnoremap <leader>j :tjump /
 nnoremap <leader>p :ptjump /
 
-" Tab through autocomplete
+" terminal
+nnoremap <leader>c :vert term<CR>
+
+" tab through autocomplete
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-" Tab through results while searching
+" tab through results while searching
 cnoremap <expr> <Tab>   getcmdtype() == "/" \|\| getcmdtype() == "?" ? "<CR>/<C-r>/" : "<C-z>"
 cnoremap <expr> <S-Tab> getcmdtype() == "/" \|\| getcmdtype() == "?" ? "<CR>?<C-r>/" : "<S-Tab>"
 
@@ -89,12 +90,13 @@ augroup Indentation
 augroup END
 
 augroup LineLength
-    autocmd!
-    autocmd FileType python setlocal colorcolumn=101
-    autocmd FileType ruby setlocal colorcolumn=121
+  autocmd!
+  autocmd FileType python setlocal colorcolumn=101
+  autocmd FileType ruby setlocal colorcolumn=121
 augroup END
 
 augroup Linting
+  autocmd!
   autocmd FileType python setlocal makeprg=flake8\ --radon-max-cc\ 5
   autocmd FileType ruby setlocal makeprg=rubocop\ --format=emacs
   autocmd BufWritePost *.py,*.rb silent make! <afile> | silent redraw!
@@ -112,5 +114,5 @@ augroup FileReload
   autocmd BufEnter,BufLeave,FocusGained,FocusLost,InsertEnter,InsertLeave * checktime
 augroup END
 
-" Colorscheme
+" COLORSCHEME
 colorscheme apprentice
