@@ -76,10 +76,10 @@ function git_branch {
     PS1+="${branch#\*}"
 }
 
-if [[ $0 == -bash ]]; then
-  export PROMPT_COMMAND="${PROMPT_COMMAND} && __prompt_command"
-else
+if [[ -z ${PROMPT_COMMAND} ]]; then
   export PROMPT_COMMAND="__prompt_command"
+else
+  export PROMPT_COMMAND="${PROMPT_COMMAND} && __prompt_command"
 fi
 
 function __prompt_command {
