@@ -21,7 +21,7 @@ set list
 set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
 set mouse=a
 set noswapfile
-set number relativenumber
+set number
 set path=.,**
 set ruler
 set scrolloff=1
@@ -101,12 +101,6 @@ augroup Linting
   autocmd FileType ruby setlocal makeprg=rubocop\ --format=emacs
   autocmd BufWritePost *.py,*.rb silent make! <afile> | silent redraw!
   autocmd QuickFixCmdPost [^l]* cwindow
-augroup END
-
-augroup NumberToggle
-  autocmd!
-  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * set relativenumber
-  autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * set norelativenumber
 augroup END
 
 augroup FileReload
