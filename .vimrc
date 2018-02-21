@@ -54,6 +54,10 @@ nnoremap <leader>ev :vsplit $MYVIMRC<CR>
 nnoremap <leader>eb :vsplit ~/.bashrc<CR>
 nnoremap <leader>rv :source $MYVIMRC<CR>
 
+" mark
+nnoremap ' `
+nnoremap ` '
+
 " file
 nnoremap <leader>f :find *
 nnoremap <leader>s :sfind *
@@ -66,7 +70,7 @@ nnoremap gB :ls<CR>:sbuffer<space>
 nnoremap <leader>b :buffer *
 nnoremap <leader>B :sbuffer *
 
-" tags
+" tag
 nnoremap <leader>j :tjump /
 nnoremap <leader>p :ptjump /
 
