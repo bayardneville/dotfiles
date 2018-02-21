@@ -11,6 +11,7 @@ set backspace=indent,eol,start
 set complete+=d
 set cursorline
 set expandtab
+set grepprg=grep\ -rnsHI\ --exclude=.tags
 set hidden
 set hlsearch
 set ignorecase
@@ -84,6 +85,10 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 " tab through results while searching
 cnoremap <expr> <Tab>   getcmdtype() == "/" \|\| getcmdtype() == "?" ? "<CR>/<C-r>/" : "<C-z>"
 cnoremap <expr> <S-Tab> getcmdtype() == "/" \|\| getcmdtype() == "?" ? "<CR>?<C-r>/" : "<S-Tab>"
+
+" grep
+command! -nargs=+ -complete=file_in_path -bar Grep silent! grep! <args> | redraw!
+nnoremap <leader>g :Grep<space>
 
 " AUTOCOMMANDS
 augroup Indentation
