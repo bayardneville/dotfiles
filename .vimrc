@@ -11,7 +11,7 @@ set backspace=indent,eol,start
 set complete+=d
 set cursorline
 set expandtab
-set grepprg=grep\ -rnsHI\ --exclude=.tags
+set grepprg=grep\ -rnsHI\ --exclude=.tags\ --exclude-dir=log
 set hidden
 set hlsearch
 set ignorecase
