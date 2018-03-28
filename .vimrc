@@ -11,7 +11,7 @@ set backspace=indent,eol,start
 set complete+=d
 set cursorline
 set expandtab
-set grepprg=grep\ -rnsHI\ --exclude=.tags\ --exclude-dir=log
+set grepprg=grep\ -rnsHI\ --exclude=.tags\ --exclude-dir=log\ --exclude-dir=.git\ --exclude-dir=.pytest_cache\ --exclude-dir=.cache\ --exclude-dir=test_reports\ --exclude-dir=target
 set hidden
 set hlsearch
 set ignorecase
@@ -87,8 +87,12 @@ cnoremap <expr> <Tab>   getcmdtype() == "/" \|\| getcmdtype() == "?" ? "<CR>/<C-
 cnoremap <expr> <S-Tab> getcmdtype() == "/" \|\| getcmdtype() == "?" ? "<CR>?<C-r>/" : "<S-Tab>"
 
 " grep
+nnoremap <silent> <leader>g :Grep<space>
+nnoremap <leader>G :Grep<space> <c-r><c-w><cr>
+xnoremap <silent> ,G :<C-u>let cmd = "Grep " . visual#GetSelection() <bar>
+                        \ call histadd("cmd", cmd) <bar>
+                        \ execute cmd<CR>
 command! -nargs=+ -complete=file_in_path -bar Grep silent! grep! <args> | redraw!
-nnoremap <leader>g :Grep<space>
 
 " AUTOCOMMANDS
 augroup Indentation
@@ -100,12 +104,14 @@ augroup END
 
 augroup LineLength
   autocmd!
+  autocmd FileType java setlocal colorcolumn=101
   autocmd FileType python setlocal colorcolumn=101
   autocmd FileType ruby setlocal colorcolumn=121
 augroup END
 
 augroup Linting
   autocmd!
+  autocmd FileType java setlocal makeprg=checkstyle\ -c\ /google_checks.xml
   autocmd FileType python setlocal makeprg=flake8\ --radon-max-cc\ 5
   autocmd FileType ruby setlocal makeprg=rubocop\ --format=emacs
   autocmd BufWritePost *.py,*.rb silent make! <afile> | silent redraw!
