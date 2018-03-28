@@ -114,7 +114,7 @@ augroup Linting
   autocmd FileType java setlocal makeprg=checkstyle\ -c\ /google_checks.xml
   autocmd FileType python setlocal makeprg=flake8\ --radon-max-cc\ 5
   autocmd FileType ruby setlocal makeprg=rubocop\ --format=emacs
-  autocmd BufWritePost *.py,*.rb silent make! <afile> | silent redraw!
+  autocmd BufWritePost *.java,*.py,*.rb silent make! <afile> | silent redraw!
   autocmd QuickFixCmdPost [^l]* cwindow
 augroup END
 
