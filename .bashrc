@@ -99,8 +99,8 @@ function __prompt_command {
     PS1+="\n${magenta}\$ ${normal}"
 }
 
-if [ -f ~/.localrc.bash ]; then
-    . ~/.localrc.bash
+if [ -f ~/.localrc ]; then
+    . ~/.localrc
 fi
 
 if [ -f ~/.git-completion.bash ]; then
