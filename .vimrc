@@ -8,10 +8,11 @@ packadd matchit
 set autoindent
 set autoread
 set backspace=indent,eol,start
+set clipboard^=unnamed
 set complete+=d
 set cursorline
 set expandtab
-set grepprg=grep\ -rnsHI\ --exclude=.tags\ --exclude-dir=log\ --exclude-dir=.git\ --exclude-dir=.pytest_cache\ --exclude-dir=.cache\ --exclude-dir=test_reports\ --exclude-dir=target
+set grepprg=grep\ -rnsHI\ --exclude=.tags\ --exclude-dir=log\ --exclude-dir=.git\ --exclude-dir=.pytest_cache\ --exclude-dir=.cache\ --exclude-dir=test_reports\ --exclude-dir=target\ --exclude-dir=tmp\ --exclude-dir=dist
 set hidden
 set hlsearch
 set ignorecase
@@ -104,17 +105,15 @@ augroup END
 
 augroup LineLength
   autocmd!
-  autocmd FileType java setlocal colorcolumn=101
   autocmd FileType python setlocal colorcolumn=101
   autocmd FileType ruby setlocal colorcolumn=121
 augroup END
 
 augroup Linting
   autocmd!
-  autocmd FileType java setlocal makeprg=checkstyle\ -c\ /google_checks.xml
   autocmd FileType python setlocal makeprg=flake8\ --radon-max-cc\ 5
   autocmd FileType ruby setlocal makeprg=rubocop\ --format=emacs
-  autocmd BufWritePost *.java,*.py,*.rb silent make! <afile> | silent redraw!
+  autocmd BufWritePost *.py,*.rb silent make! <afile> | silent redraw!
   autocmd QuickFixCmdPost [^l]* cwindow
 augroup END
 
