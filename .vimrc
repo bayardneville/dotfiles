@@ -27,6 +27,7 @@ set number
 set path=.,**
 set ruler
 set scrolloff=1
+set shellpipe=>
 set shiftround
 set showcmd
 set showmatch
@@ -111,7 +112,7 @@ augroup END
 
 augroup Linting
   autocmd!
-  autocmd FileType python setlocal makeprg=flake8\ --radon-max-cc\ 5
+  autocmd FileType python setlocal makeprg=flake8\ --config\ ~/.config/flake8
   autocmd FileType ruby setlocal makeprg=rubocop\ --format=emacs
   autocmd BufWritePost *.py,*.rb silent make! <afile> | silent redraw!
   autocmd QuickFixCmdPost [^l]* cwindow
