@@ -12,7 +12,7 @@ set clipboard^=unnamed
 set complete+=d
 set cursorline
 set expandtab
-set grepprg=grep\ -rnsHI\ --exclude=.tags\ --exclude-dir=log\ --exclude-dir=.git\ --exclude-dir=.pytest_cache\ --exclude-dir=.cache\ --exclude-dir=test_reports\ --exclude-dir=target\ --exclude-dir=tmp\ --exclude-dir=dist
+set grepprg=grep\ -rnsHI\ --exclude=.tags\ --exclude-dir=log\ --exclude-dir=.git\ --exclude-dir=.pytest_cache\ --exclude-dir=.cache\ --exclude-dir=test_reports\ --exclude-dir=target\ --exclude-dir=tmp\ --exclude-dir=dist\ --exclude-dir=.tmp
 set hidden
 set hlsearch
 set ignorecase
@@ -23,7 +23,6 @@ set list
 set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
 set mouse=a
 set noswapfile
-set number
 set path=.,**
 set ruler
 set scrolloff=1
@@ -79,14 +78,6 @@ nnoremap <leader>p :ptjump /
 
 " terminal
 nnoremap <leader>c :vert term<CR>
-
-" tab through autocomplete
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-" tab through results while searching
-cnoremap <expr> <Tab>   getcmdtype() == "/" \|\| getcmdtype() == "?" ? "<CR>/<C-r>/" : "<C-z>"
-cnoremap <expr> <S-Tab> getcmdtype() == "/" \|\| getcmdtype() == "?" ? "<CR>?<C-r>/" : "<S-Tab>"
 
 " grep
 nnoremap <silent> <leader>g :Grep<space>
