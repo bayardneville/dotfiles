@@ -38,7 +38,7 @@ set splitright
 set tags=./tags;,tags;,.tags;
 set ttymouse=sgr
 set wildcharm=<C-z>
-set wildignore+=tags,.tags,*.pyc
+set wildignore+=tags,.tags,*.pyc,*_py.html
 set wildignorecase
 set wildmenu
 
