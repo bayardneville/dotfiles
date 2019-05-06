@@ -16,9 +16,10 @@ bind '"\e[A":history-search-backward'
 bind '"\e[B":history-search-forward'
 
 export EDITOR="vim"
+export CDPATH=./:~/
 export CLICOLOR=1
-export HISTSIZE=10000
-export HISTFILESIZE=5000
+export HISTSIZE=100000
+export HISTFILESIZE=100000
 
 # Prompt with timer setup and previous command setup
 normal="\[\e[0m\]"
