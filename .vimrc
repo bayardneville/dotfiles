@@ -35,7 +35,7 @@ set smartcase
 set softtabstop=-1
 set splitbelow
 set splitright
-set tags=./tags;,tags;,.tags;
+set tags=./tags;,tags;
 set ttymouse=sgr
 set wildcharm=<C-z>
 set wildignore+=tags,.tags,*.pyc,*_py.html
