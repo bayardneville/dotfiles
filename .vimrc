@@ -73,11 +73,15 @@ nnoremap <leader>b :buffer *
 nnoremap <leader>B :sbuffer *
 
 " tag
-nnoremap <leader>j :tjump /
-nnoremap <leader>p :ptjump /
+" nnoremap <leader>j :tjump /
+" nnoremap <leader>p :ptjump /
 
 " terminal
 nnoremap <leader>c :vert term<CR>
+
+" quickfix
+nnoremap <leader>j :cnext<CR>
+nnoremap <leader>k :cprevious<CR>
 
 " grep
 nnoremap <silent> <leader>g :Grep<space>
