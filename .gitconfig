@@ -1,0 +1,52 @@
+[user]
+  name = Bayard Neville
+[color]
+  ui = auto
+  interactive = auto
+[merge]
+  tool = vimdiff
+[alias]
+  # Status
+  s = status
+  l = log
+  sh = show --name-only
+  shd = show --pretty=''
+  d = diff
+  db = !git diff $(git merge-base --fork-point master)
+  dh = diff HEAD
+  ds = diff --staged
+
+  # Branch
+  b = branch
+  o = checkout
+  ob = checkout -b
+  bn = rev-parse --abbrev-ref HEAD
+
+  # Staging
+  a = add
+
+  # Commit
+  c = commit
+  cm = commit -m
+  pn = !git push -u origin HEAD
+
+  # Reset
+  r = reset
+
+  # Cleanup
+  cleanup = !git checkout master && git pull && git remote prune origin && git prune && git gc && git b -vv | grep ': gone]' | awk '{print $1}' | xargs git branch -D
+
+  # Misc
+  h = help
+[core]
+  excludesfile = ~/.gitignore_global
+[diff]
+  compactionHeuristic = 1
+[pager]
+  log = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | less
+  show = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | less
+  diff = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | less
+[interactive]
+  diffFilter = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight
+[include]
+  path = .lgitconfig
