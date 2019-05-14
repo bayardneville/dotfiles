@@ -33,8 +33,6 @@ set showmatch
 set showmode
 set smartcase
 set softtabstop=-1
-set splitbelow
-set splitright
 set tags=./tags;,tags;
 set ttymouse=sgr
 set wildcharm=<C-z>
@@ -109,7 +107,10 @@ augroup Linting
   autocmd!
   autocmd FileType python setlocal makeprg=flake8\ --config\ ~/.config/flake8
   autocmd FileType ruby setlocal makeprg=rubocop\ --format=emacs
-  autocmd BufWritePost *.py,*.rb silent make! <afile> | silent redraw!
+  autocmd BufWritePost *.py,*.rb silent lmake! <afile> | silent redraw!
+  autocmd QuickFixCmdPost l[^h]* lwindow
+
+  " used by grep
   autocmd QuickFixCmdPost [^l]* cwindow
 augroup END
 
