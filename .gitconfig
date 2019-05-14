@@ -34,7 +34,7 @@
   r = reset
 
   # Cleanup
-  cleanup = !git checkout master && git pull && git remote prune origin && git prune && git gc && git b -vv | grep ': gone]' | awk '{print $1}' | xargs git branch -D
+  cleanup = !git checkout master && git pull && git remote prune origin && git prune && git gc && git b -vv | grep ': gone]' | awk '{print $1}' | xargs git branch -D | git branch --list
 
   # Misc
   h = help
