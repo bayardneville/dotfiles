@@ -17,9 +17,25 @@ bind '"\e[B":history-search-forward'
 
 export EDITOR="vim"
 export CDPATH=./:~/
-export CLICOLOR=1
-export HISTSIZE=100000
-export HISTFILESIZE=100000
+
+CLICOLOR=1
+
+HISTSIZE=1000000
+HISTFILESIZE=1000000
+# Ignore whitespace and duplicates
+HISTCONTROL=ignoreboth
+HISTIGNORE='ls:bg:fg:history'
+
+# Append instead of overwriting
+shopt -s histappend
+# Group multi-line commands onto one line in history
+shopt -s cmdhist
+
+if [[ $0 != -bash || -z ${PROMPT_COMMAND} ]]; then
+  export PROMPT_COMMAND="history -a && __prompt_command"
+else
+  export PROMPT_COMMAND="${PROMPT_COMMAND} && history -a && __prompt_command"
+fi
 
 # Prompt with timer setup and previous command setup
 normal="\[\e[0m\]"
@@ -76,12 +92,6 @@ function git_branch {
     branch="$(git branch --no-color 2> /dev/null | grep "*" 2> /dev/null)"
     PS1+="${branch#\*}"
 }
-
-if [[ $0 != -bash || -z ${PROMPT_COMMAND} ]]; then
-  export PROMPT_COMMAND="__prompt_command"
-else
-  export PROMPT_COMMAND="${PROMPT_COMMAND} && __prompt_command"
-fi
 
 function __prompt_command {
     local EXIT="${?}"
