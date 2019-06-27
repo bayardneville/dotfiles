@@ -32,9 +32,9 @@ shopt -s histappend
 shopt -s cmdhist
 
 if [[ $0 != -bash || -z ${PROMPT_COMMAND} ]]; then
-  export PROMPT_COMMAND="history -a && __prompt_command"
+  export PROMPT_COMMAND="__prompt_command"
 else
-  export PROMPT_COMMAND="${PROMPT_COMMAND} && history -a && __prompt_command"
+  export PROMPT_COMMAND="${PROMPT_COMMAND} && __prompt_command"
 fi
 
 # Prompt with timer setup and previous command setup
