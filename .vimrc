@@ -105,7 +105,7 @@ augroup END
 
 augroup Linting
   autocmd!
-  autocmd FileType python setlocal makeprg=flake8\ --config\ ~/.config/flake8
+  autocmd FileType python setlocal makeprg=flake8\ --append-config\ ~/.config/flake8
   autocmd FileType ruby setlocal makeprg=rubocop\ --format=emacs
   autocmd BufWritePost *.py,*.rb silent lmake! <afile> | silent redraw!
   autocmd QuickFixCmdPost l[^h]* lwindow
