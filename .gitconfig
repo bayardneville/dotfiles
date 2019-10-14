@@ -9,12 +9,12 @@
   # Status
   s = status
   l = log
-  sh = show --name-only
-  shd = show --pretty=''
-  d = diff
-  db = !git diff $(git merge-base --fork-point master)
-  dh = diff HEAD
-  ds = diff --staged
+  sh = show --name-only --color-moved
+  shd = show --pretty='' --color-moved
+  d = diff --color-moved
+  db = !git diff --color-moved $(git merge-base --fork-point master)
+  dh = diff --color-moved HEAD
+  ds = diff --color-moved --staged
 
   # Branch
   b = branch

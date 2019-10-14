@@ -17,8 +17,7 @@ bind '"\e[B":history-search-forward'
 
 export EDITOR="vim"
 export CDPATH=./:~/
-
-CLICOLOR=1
+export CLICOLOR=1
 
 HISTSIZE=1000000
 HISTFILESIZE=1000000
