@@ -12,7 +12,7 @@ set clipboard^=unnamed
 set complete+=d
 set cursorline
 set expandtab
-set grepprg=grep\ -rnsHI\ --exclude=tags\ --exclude-dir=log\ --exclude-dir=.git\ --exclude-dir=.pytest_cache\ --exclude-dir=.cache\ --exclude-dir=test_reports\ --exclude-dir=target\ --exclude-dir=tmp\ --exclude-dir=dist\ --exclude-dir=.tmp\ --exclude-dir=logs\ --exclude-dir=bower_components\ --exclude-dir=node_modules
+set grepprg=ag\ --vimgrep
 set hidden
 set hlsearch
 set ignorecase
