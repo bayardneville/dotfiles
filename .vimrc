@@ -94,6 +94,8 @@ augroup Indentation
   autocmd!
   autocmd FileType * setlocal shiftwidth=2
   autocmd FileType python setlocal shiftwidth=4
+  autocmd FileType python let g:pyindent_open_paren='shiftwidth()'
+  " autocmd FileType python let g:pyindent_continue='shiftwidth()'
   autocmd FileType make let &l:shiftwidth=&tabstop|setlocal noexpandtab
 augroup END
 
