@@ -1,9 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/Users/bayard.neville/dev/ml-airflow/apache_airflow/dags'
-let g:netrw_dirhist_2='/Users/bayard.neville/dev/ml-airflow/apache_airflow/dags/recipe_dropoff_numbers'
-let g:netrw_dirhist_3='/Users/bayard.neville/dev/ml-airflow/apache_airflow/dags/prs_simulation'
-let g:netrw_dirhist_4='/Users/bayard.neville/dev/ml-airflow/apache_airflow/dags'
-let g:netrw_dirhist_5='/Users/bayard.neville/dev/ml-airflow/apache_airflow/dags/recipe_dropoff_numbers'
-let g:netrw_dirhist_6='/Users/bayard.neville/dev/ml-airflow/apache_airflow/logs/oas_simulation'
-let g:netrw_dirhist_7='/Users/bayard.neville/dev/ml-airflow/apache_airflow/dags/recipe_distribution_forecast'
