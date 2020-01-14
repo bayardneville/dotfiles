@@ -86,6 +86,7 @@ nnoremap <leader>G :Grep<space> <c-r><c-w><cr>
 xnoremap <silent> ,G :<C-u>let cmd = "Grep " . visual#GetSelection() <bar>
                         \ call histadd("cmd", cmd) <bar>
                         \ execute cmd<CR>
+" this does NOT allow passing of additional flags to grepprg
 command! -nargs=+ -complete=file_in_path -bar Grep cgetexpr system(&grepprg . ' ''<args>''')
 
 " AUTOCOMMANDS
@@ -109,7 +110,7 @@ augroup Linting
   autocmd!
   autocmd FileType python setlocal makeprg=flake8\ --append-config\ ~/.config/flake8
   autocmd FileType ruby setlocal makeprg=rubocop\ --format=emacs
-  autocmd BufWritePost *.py,*.rb silent lmake! <afile> | silent redraw!
+  autocmd BufWritePost *.py,*.rb lgetexpr system(&makeprg . ' ' . expand('<afile>'))
 augroup END
 
 " automatically open location/quickfix window when populated
