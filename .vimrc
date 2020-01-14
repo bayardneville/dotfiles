@@ -26,7 +26,6 @@ set noswapfile
 set path=.,**
 set ruler
 set scrolloff=1
-set shellpipe=>
 set shiftround
 set showcmd
 set showmatch
@@ -87,7 +86,7 @@ nnoremap <leader>G :Grep<space> <c-r><c-w><cr>
 xnoremap <silent> ,G :<C-u>let cmd = "Grep " . visual#GetSelection() <bar>
                         \ call histadd("cmd", cmd) <bar>
                         \ execute cmd<CR>
-command! -nargs=+ -complete=file_in_path -bar Grep silent! grep! <args> | redraw!
+command! -nargs=+ -complete=file_in_path -bar Grep cgetexpr system(&grepprg . ' ''<args>''')
 
 " AUTOCOMMANDS
 augroup Indentation
@@ -111,9 +110,11 @@ augroup Linting
   autocmd FileType ruby setlocal makeprg=rubocop\ --format=emacs
   autocmd BufWritePost *.py,*.rb silent lmake! <afile> | silent redraw!
   autocmd QuickFixCmdPost l[^h]* lwindow
+augroup END
 
-  " used by grep
-  autocmd QuickFixCmdPost [^l]* cwindow
+augroup Quickfix
+  autocmd!
+  autocmd QuickFixCmdPost cgetexpr cwindow
 augroup END
 
 augroup FileReload
