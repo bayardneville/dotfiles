@@ -104,19 +104,22 @@ augroup LineLength
   autocmd FileType ruby setlocal colorcolumn=121
 augroup END
 
+" specify language specific linters to populate the location list on save
 augroup Linting
   autocmd!
   autocmd FileType python setlocal makeprg=flake8\ --append-config\ ~/.config/flake8
   autocmd FileType ruby setlocal makeprg=rubocop\ --format=emacs
   autocmd BufWritePost *.py,*.rb silent lmake! <afile> | silent redraw!
-  autocmd QuickFixCmdPost l[^h]* lwindow
 augroup END
 
+" automatically open location/quickfix window when populated
 augroup Quickfix
   autocmd!
-  autocmd QuickFixCmdPost cgetexpr cwindow
+  autocmd QuickFixCmdPost [^l]* cwindow
+  autocmd QuickFixCmdPost l* lwindow
 augroup END
 
+" reload file on various common triggers to pick up external changes
 augroup FileReload
   autocmd!
   autocmd BufEnter,BufLeave,FocusGained,FocusLost,InsertEnter,InsertLeave * checktime
