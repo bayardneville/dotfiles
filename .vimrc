@@ -89,6 +89,9 @@ xnoremap <silent> ,G :<C-u>let cmd = "Grep " . visual#GetSelection() <bar>
 " this does NOT allow passing of additional flags to grepprg
 command! -nargs=+ -complete=file_in_path -bar Grep cgetexpr system(&grepprg . ' ''<args>''')
 
+" git
+command! -range GB echo join(systemlist("git -C " . shellescape(expand('%:p:h')) . " blame -L <line1>,<line2> " . expand('%:t')), "\n")
+
 " AUTOCOMMANDS
 augroup Indentation
   autocmd!
