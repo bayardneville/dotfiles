@@ -49,9 +49,9 @@ map <space> \
 map <leader><space> :nohlsearch<CR>
 
 " config
-nnoremap <leader>ev :vsplit $MYVIMRC<CR>
-nnoremap <leader>eb :vsplit ~/.bashrc<CR>
-nnoremap <leader>rv :source $MYVIMRC<CR>
+nnoremap <silent> <leader>ev :vsplit $MYVIMRC<CR>
+nnoremap <silent> <leader>eb :vsplit ~/.bashrc<CR>
+nnoremap <silent> <leader>rv :source $MYVIMRC<CR>
 
 " mark
 nnoremap ' `
@@ -81,8 +81,8 @@ nnoremap <leader>j :cnext<CR>
 nnoremap <leader>k :cprevious<CR>
 
 " grep
-nnoremap <silent> <leader>g :Grep<space>
-nnoremap <leader>G :Grep<space> <c-r><c-w><cr>
+nnoremap <leader>g :Grep<space>
+nnoremap <silent> <leader>G :Grep<space> <c-r><c-w><cr>
 xnoremap <silent> ,G :<C-u>let cmd = "Grep " . visual#GetSelection() <bar>
                         \ call histadd("cmd", cmd) <bar>
                         \ execute cmd<CR>
