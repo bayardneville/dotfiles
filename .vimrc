@@ -117,11 +117,11 @@ augroup Linting
 augroup END
 
 " automatically open location/quickfix window when populated
-augroup Quickfix
-  autocmd!
-  autocmd QuickFixCmdPost [^l]* cwindow
-  autocmd QuickFixCmdPost l* lwindow
-augroup END
+" augroup Quickfix
+"   autocmd!
+"   autocmd QuickFixCmdPost [^l]* cwindow
+"   autocmd QuickFixCmdPost l* lwindow
+" augroup END
 
 " reload file on various common triggers to pick up external changes
 augroup FileReload
