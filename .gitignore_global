@@ -1,4 +1,6 @@
 .DS_Store
 .ignore
 tags
+tags.lock
+tags.temp
 pytest_cache/
