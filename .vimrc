@@ -62,6 +62,10 @@ nnoremap <leader>f :find *
 nnoremap <leader>s :sfind *
 nnoremap <leader>v :vert sfind *
 nnoremap <leader>t :tabfind *
+" nnoremap <leader>F :find <C-R>=fnameescape(expand('%:p:h')).'/**/*'<CR>
+" nnoremap <leader>S :sfind <C-R>=fnameescape(expand('%:p:h')).'/**/*'<CR>
+" nnoremap <leader>V :vert sfind <C-R>=fnameescape(expand('%:p:h')).'/**/*'<CR>
+" nnoremap <leader>T :tabfind <C-R>=fnameescape(expand('%:p:h')).'/**/*'<CR>
 
 " buffer
 nnoremap gb :ls<CR>:buffer<space>
@@ -89,6 +93,27 @@ xnoremap <silent> ,G :<C-u>let cmd = "Grep " . visual#GetSelection() <bar>
 " this does NOT allow passing of additional flags to grepprg
 command! -nargs=+ -complete=file_in_path -bar Grep cgetexpr system(&grepprg . ' ''<args>''')
 
+" quick search replace
+" paragraph
+nnoremap <Space><Space> :'{,'}s/\<<C-r>=expand('<cword>')<CR>\>/
+" file
+nnoremap <Space>%       :%s/\<<C-r>=expand('<cword>')<CR>\>/
+
+" replace occurrences of word under cursor (repeat with .)
+" forward
+nnoremap ,; *``cgn
+" backward
+nnoremap ,, #``cgN
+
+" autoclosing brackets
+inoremap (<CR> (<CR>)<Esc>O
+inoremap {<CR> {<CR>}<Esc>O
+inoremap {; {<CR>};<Esc>O
+inoremap {, {<CR>},<Esc>O
+inoremap [<CR> [<CR>]<Esc>O
+inoremap [; [<CR>];<Esc>O
+inoremap [, [<CR>],<Esc>O
+
 " git
 command! -range GB echo join(systemlist("git -C " . shellescape(expand('%:p:h')) . " blame -L <line1>,<line2> " . expand('%:t')), "\n")
 
@@ -98,7 +123,9 @@ augroup Indentation
   autocmd FileType * setlocal shiftwidth=2
   autocmd FileType python setlocal shiftwidth=4
   autocmd FileType python let g:pyindent_open_paren='shiftwidth()'
+  " autocmd FileType python let g:pyindent_nested_paren='shiftwidth()'
   " autocmd FileType python let g:pyindent_continue='shiftwidth()'
+  autocmd FileType python let g:pyindent_continue='0'
   autocmd FileType make let &l:shiftwidth=&tabstop|setlocal noexpandtab
 augroup END
 
@@ -116,6 +143,7 @@ augroup Linting
   autocmd BufWritePost *.py,*.rb lgetexpr system(&makeprg . ' ' . expand('<afile>'))
 augroup END
 
+" commented out since conflicts with vim-qf
 " automatically open location/quickfix window when populated
 " augroup Quickfix
 "   autocmd!
