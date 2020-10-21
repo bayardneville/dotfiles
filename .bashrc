@@ -6,27 +6,29 @@ if [ -f ~/.git-completion.bash ]; then
   __git_complete g __git_main
 fi
 
-alias ll="ls -lhL"
-alias la="ls -lahL"
-alias l.="ls -ld .*"
+alias ll='ls -lhL'
+alias la='ls -lahL'
+alias l.='ls -ld .*'
 alias g='git'
+# quick look from cli
+alias ql='qlmanage -p "$@"'
 
 bind '"\e[A":history-search-backward'
 bind '"\e[B":history-search-forward'
 
-export EDITOR="vim"
+export EDITOR='vim'
 export CDPATH=./:~/
 export CLICOLOR=1
 
 HISTSIZE=1000000
 HISTFILESIZE=1000000
-# Ignore whitespace and duplicates
+# ignore whitespace and duplicates
 HISTCONTROL=ignoreboth
 HISTIGNORE='ls:bg:fg:history'
 
-# Append instead of overwriting
+# append instead of overwriting
 shopt -s histappend
-# Group multi-line commands onto one line in history
+# group multi-line commands onto one line in history
 shopt -s cmdhist
 
 if [[ $0 != -bash || -z ${PROMPT_COMMAND} ]]; then
@@ -35,7 +37,7 @@ else
   export PROMPT_COMMAND="${PROMPT_COMMAND} && __prompt_command"
 fi
 
-# Prompt with timer setup and previous command setup
+# prompt with timer setup and previous command setup
 normal="\[\e[0m\]"
 red="\[\e[0;31m\]"
 orange="\[\e[1;31m\]"
