@@ -1,11 +1,3 @@
-# Git tab completion
-if [ -f ~/.git-completion.bash ]; then
-  . ~/.git-completion.bash
-
-  # Tab completion git aliased to g
-  __git_complete g __git_main
-fi
-
 alias ll='ls -lhL'
 alias la='ls -lahL'
 alias l.='ls -ld .*'
@@ -114,6 +106,10 @@ if [ -f ~/.lbashrc ]; then
     . ~/.lbashrc
 fi
 
+# Git tab completion
 if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
+
+  # Tab completion git aliased to g
+  __git_complete g __git_main
 fi
