@@ -46,12 +46,7 @@ nnoremap j gj
 nnoremap k gk
 
 map <space> \
-map <leader><space> :nohlsearch<CR>
-
-" config
-nnoremap <silent> <leader>ev :vsplit $MYVIMRC<CR>
-nnoremap <silent> <leader>eb :vsplit ~/.bashrc<CR>
-nnoremap <silent> <leader>rv :source $MYVIMRC<CR>
+map <leader><leader> :nohlsearch<CR>
 
 " mark
 nnoremap ' `
@@ -77,9 +72,6 @@ nnoremap <leader>B :sbuffer *
 " nnoremap <leader>j :tjump /
 " nnoremap <leader>p :ptjump /
 
-" terminal
-nnoremap <leader>c :vert term<CR>
-
 " quickfix
 nnoremap <leader>j :cnext<CR>
 nnoremap <leader>k :cprevious<CR>
@@ -95,24 +87,15 @@ command! -nargs=+ -complete=file_in_path -bar Grep cgetexpr system(&grepprg . ' 
 
 " quick search replace
 " paragraph
-nnoremap <Space><Space> :'{,'}s/\<<C-r>=expand('<cword>')<CR>\>/
+nnoremap <leader><space> :'{,'}s/\<<C-r>=expand('<cword>')<CR>\>/
 " file
-nnoremap <Space>%       :%s/\<<C-r>=expand('<cword>')<CR>\>/
+nnoremap <leader>%       :%s/\<<C-r>=expand('<cword>')<CR>\>/
 
 " replace occurrences of word under cursor (repeat with .)
 " forward
 nnoremap ,; *``cgn
 " backward
 nnoremap ,, #``cgN
-
-" autoclosing brackets
-inoremap (<CR> (<CR>)<Esc>O
-inoremap {<CR> {<CR>}<Esc>O
-inoremap {; {<CR>};<Esc>O
-inoremap {, {<CR>},<Esc>O
-inoremap [<CR> [<CR>]<Esc>O
-inoremap [; [<CR>];<Esc>O
-inoremap [, [<CR>],<Esc>O
 
 " git
 command! -range GB echo join(systemlist("git -C " . shellescape(expand('%:p:h')) . " blame -L <line1>,<line2> " . expand('%:t')), "\n")
