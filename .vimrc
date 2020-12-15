@@ -48,7 +48,7 @@ nnoremap k gk
 map <space> \
 map <leader><leader> :nohlsearch<cr>
 
-" mark
+" prioritize jump to exact mark
 nnoremap ' `
 nnoremap ` '
 
@@ -84,15 +84,15 @@ command! -nargs=+ -complete=file_in_path -bar Grep cgetexpr system(&grepprg . ' 
 
 " quick search replace
 " paragraph
-nnoremap <leader><space> :'{,'}s/\<<c-r>=expand('<cword>')<cr>\>/
+nnoremap <leader>s :'{,'}s/\<<c-r>=expand('<cword>')<cr>\>/
 " file
-nnoremap <leader>%       :%s/\<<c-r>=expand('<cword>')<cr>\>/
+nnoremap <leader>S :%s/\<<c-r>=expand('<cword>')<cr>\>/
 
 " replace occurrences of word under cursor (repeat with .)
 " forward
-nnoremap ,; *``cgn
+nnoremap <leader>; *``cgn
 " backward
-nnoremap ,, #``cgN
+nnoremap <leader>, #``cgN
 
 " git
 command! -range GB echo join(systemlist("git -C " . shellescape(expand('%:p:h')) . " blame -L <line1>,<line2> " . expand('%:t')), "\n")
