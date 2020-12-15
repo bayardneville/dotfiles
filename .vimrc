@@ -34,7 +34,7 @@ set smartcase
 set softtabstop=-1
 set tags=./tags;,tags;
 set ttymouse=sgr
-set wildcharm=<C-z>
+set wildcharm=<c-z>
 set wildignore+=tags,*.pyc,*_py.html
 set wildignorecase
 set wildmenu
@@ -46,7 +46,7 @@ nnoremap j gj
 nnoremap k gk
 
 map <space> \
-map <leader><leader> :nohlsearch<CR>
+map <leader><leader> :nohlsearch<cr>
 
 " mark
 nnoremap ' `
@@ -56,40 +56,37 @@ nnoremap ` '
 nnoremap <leader>f :find *
 nnoremap <leader>s :sfind *
 nnoremap <leader>v :vert sfind *
-nnoremap <leader>t :tabfind *
-" nnoremap <leader>F :find <C-R>=fnameescape(expand('%:p:h')).'/**/*'<CR>
-" nnoremap <leader>S :sfind <C-R>=fnameescape(expand('%:p:h')).'/**/*'<CR>
-" nnoremap <leader>V :vert sfind <C-R>=fnameescape(expand('%:p:h')).'/**/*'<CR>
-" nnoremap <leader>T :tabfind <C-R>=fnameescape(expand('%:p:h')).'/**/*'<CR>
 
 " buffer
-nnoremap gb :ls<CR>:buffer<space>
-nnoremap gB :ls<CR>:sbuffer<space>
+nnoremap gb :ls<cr>:buffer<space>
+nnoremap gB :ls<cr>:sbuffer<space>
 nnoremap <leader>b :buffer *
 nnoremap <leader>B :sbuffer *
 
 " tag
-" nnoremap <leader>j :tjump /
-" nnoremap <leader>p :ptjump /
+nnoremap <leader>t :tjump /
+nnoremap <leader>p :ptjump /
+nnoremap <leader>T :tjump <c-r><c-w><cr>
+nnoremap <leader>P :ptjump <c-r><c-w><cr>
 
 " quickfix
-nnoremap <leader>j :cnext<CR>
-nnoremap <leader>k :cprevious<CR>
+nnoremap <leader>j :cnext<cr>
+nnoremap <leader>k :cprevious<cr>
 
 " grep
 nnoremap <leader>g :Grep<space>
 nnoremap <silent> <leader>G :Grep<space> <c-r><c-w><cr>
-xnoremap <silent> ,G :<C-u>let cmd = "Grep " . visual#GetSelection() <bar>
+xnoremap <silent> ,G :<c-u>let cmd = "Grep " . visual#GetSelection() <bar>
                         \ call histadd("cmd", cmd) <bar>
-                        \ execute cmd<CR>
+                        \ execute cmd<cr>
 " this does NOT allow passing of additional flags to grepprg
 command! -nargs=+ -complete=file_in_path -bar Grep cgetexpr system(&grepprg . ' ''<args>''')
 
 " quick search replace
 " paragraph
-nnoremap <leader><space> :'{,'}s/\<<C-r>=expand('<cword>')<CR>\>/
+nnoremap <leader><space> :'{,'}s/\<<c-r>=expand('<cword>')<cr>\>/
 " file
-nnoremap <leader>%       :%s/\<<C-r>=expand('<cword>')<CR>\>/
+nnoremap <leader>%       :%s/\<<c-r>=expand('<cword>')<cr>\>/
 
 " replace occurrences of word under cursor (repeat with .)
 " forward
