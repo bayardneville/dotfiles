@@ -23,7 +23,7 @@ set list
 set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
 set mouse=a
 set noswapfile
-set path=.,**
+set path=.,,**
 set ruler
 set scrolloff=1
 set shiftround
