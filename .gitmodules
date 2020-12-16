@@ -7,3 +7,6 @@
 [submodule ".vim/pack/plugins/start/vim-gutentags"]
 	path = .vim/pack/plugins/start/vim-gutentags
 	url = git@github.com:ludovicchabant/vim-gutentags.git
+[submodule ".vim/pack/plugins/start/vim-cool"]
+	path = .vim/pack/plugins/start/vim-cool
+	url = git@github.com:romainl/vim-cool.git
