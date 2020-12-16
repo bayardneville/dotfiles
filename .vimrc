@@ -58,8 +58,6 @@ nnoremap <leader>s :sfind *
 nnoremap <leader>v :vert sfind *
 
 " buffer
-nnoremap gb :ls<cr>:buffer<space>
-nnoremap gB :ls<cr>:sbuffer<space>
 nnoremap <leader>b :buffer *
 nnoremap <leader>B :sbuffer *
 
