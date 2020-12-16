@@ -20,7 +20,6 @@
   b = branch
   o = checkout
   ob = checkout -b
-  bn = rev-parse --abbrev-ref HEAD
 
   # Staging
   a = add
