@@ -35,7 +35,7 @@ set softtabstop=-1
 set tags=./tags;,tags;
 set ttymouse=sgr
 set wildcharm=<c-z>
-set wildignore+=tags,*.pyc,*_py.html
+set wildignore+=tags,*.pyc,*_py.html,*/apache_airflow/logs/*
 set wildignorecase
 set wildmenu
 
@@ -67,9 +67,13 @@ nnoremap <leader>p :ptjump /
 nnoremap <leader>T :tjump <c-r><c-w><cr>
 nnoremap <leader>P :ptjump <c-r><c-w><cr>
 
-" quickfix
+" quickfix list navigation
 nnoremap <leader>j :cnext<cr>
 nnoremap <leader>k :cprevious<cr>
+
+" location list navigation
+nnoremap <leader>J :lnext<cr>
+nnoremap <leader>K :lprevious<cr>
 
 " grep
 nnoremap <leader>g :Grep<space>
