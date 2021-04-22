@@ -9,7 +9,7 @@ bind '"\e[A":history-search-backward'
 bind '"\e[B":history-search-forward'
 
 export EDITOR='vim'
-export CDPATH=./:~/
+export CDPATH=./:~/:~/dev/:~/Documents/dev/
 export CLICOLOR=1
 
 HISTSIZE=1000000
@@ -22,6 +22,14 @@ HISTIGNORE='ls:bg:fg:history'
 shopt -s histappend
 # group multi-line commands onto one line in history
 shopt -s cmdhist
+
+# allow plain directory names to cd: does not work on macos bash :(
+# shopt -s autocd
+# autocorrect for mispelled directories in cd
+shopt -s cdspell
+
+# only complete directories for cd
+complete -d cd
 
 if [[ $0 != -bash || -z ${PROMPT_COMMAND} ]]; then
   export PROMPT_COMMAND="__prompt_command"
