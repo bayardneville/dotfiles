@@ -1,4 +1,5 @@
 --recurse=yes
+--exclude=.cache
 --exclude=.git
 --exclude=log/*
 --python-kinds=-i
