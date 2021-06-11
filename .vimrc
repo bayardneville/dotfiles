@@ -86,9 +86,9 @@ command! -nargs=+ -complete=file_in_path -bar Grep cgetexpr system(&grepprg . ' 
 
 " quick search replace
 " paragraph
-nnoremap <leader>s :'{,'}s/\<<c-r>=expand('<cword>')<cr>\>/
+nnoremap <leader>r :'{,'}s/\<<c-r>=expand('<cword>')<cr>\>/
 " file
-nnoremap <leader>S :%s/\<<c-r>=expand('<cword>')<cr>\>/
+nnoremap <leader>R :%s/\<<c-r>=expand('<cword>')<cr>\>/
 
 " replace occurrences of word under cursor (repeat with .)
 " forward
