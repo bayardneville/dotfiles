@@ -108,6 +108,7 @@ function __prompt_command {
 
     git_color && git_branch
 
+    PS1+="${magenta}${VIRTUAL_ENV:+ ($(basename ${VIRTUAL_ENV}))}"
     PS1+="\n${magenta}\$ ${normal}"
 }
 
