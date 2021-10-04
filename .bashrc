@@ -8,9 +8,10 @@ alias ql='qlmanage -p "$@"'
 bind '"\e[A":history-search-backward'
 bind '"\e[B":history-search-forward'
 
-export EDITOR='vim'
+export BASH_SILENCE_DEPRECATION_WARNING=1
 export CDPATH=./:~/:~/dev/:~/Documents/dev/
 export CLICOLOR=1
+export EDITOR='vim'
 
 HISTSIZE=1000000
 HISTFILESIZE=1000000
