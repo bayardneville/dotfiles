@@ -49,3 +49,5 @@
   diffFilter = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight
 [include]
   path = .lgitconfig
+[pull]
+  ff = only
