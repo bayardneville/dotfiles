@@ -1,5 +1,5 @@
-alias ll='ls -lhL'
-alias la='ls -lahL'
+alias ll='ls -lhF'
+alias la='ls -lahF'
 alias l.='ls -ld .*'
 alias g='git'
 # quick look from cli
