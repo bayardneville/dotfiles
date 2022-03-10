@@ -2,6 +2,7 @@ alias ll='ls -lhF'
 alias la='ls -lahF'
 alias l.='ls -ld .*'
 alias g='git'
+alias av='. venv/bin/activate'
 # quick look from cli
 alias ql='qlmanage -p "$@"'
 
