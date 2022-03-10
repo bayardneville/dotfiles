@@ -46,7 +46,7 @@ nnoremap j gj
 nnoremap k gk
 
 map <space> \
-map <leader><leader> :nohlsearch<cr>
+map <leader>h :nohlsearch<cr>
 
 " prioritize jump to exact mark
 nnoremap ' `
@@ -66,6 +66,12 @@ nnoremap <leader>t :tjump /
 nnoremap <leader>p :ptjump /
 nnoremap <leader>T :tjump <c-r><c-w><cr>
 nnoremap <leader>P :ptjump <c-r><c-w><cr>
+
+" jump directly to tag for one match otherwise show list
+nnoremap <c-]> g<c-]>
+vnoremap <c-]> g<c-]>
+nnoremap g<c-]> <c-]>
+vnoremap g<c-]> <c-]>
 
 " quickfix list navigation
 nnoremap <leader>j :cnext<cr>
