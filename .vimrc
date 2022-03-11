@@ -104,6 +104,8 @@ nnoremap <leader>, #``cgN
 
 " git
 command! -range GB echo join(systemlist("git -C " . shellescape(expand('%:p:h')) . " blame -L <line1>,<line2> " . expand('%:t')), "\n")
+" open current file in github on master branch
+command! GH echo system("open https://$(git remote -v  | sed -rn -e '1s#.*@(.*:.*)\\.git.*#\\1#' -e '1s#:#/#p')/blob/master/$(git -C " . shellescape(expand('%:p:h')) . " ls-files --full-name " . expand('%:t') . ")")
 
 " AUTOCOMMANDS
 augroup Indentation
