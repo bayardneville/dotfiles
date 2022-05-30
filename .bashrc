@@ -131,5 +131,3 @@ if [ -f ~/.git-completion.bash ]; then
   # Tab completion git aliased to g
   __git_complete g __git_main
 fi
-
-eval "$(/opt/homebrew/bin/brew shellenv)"
