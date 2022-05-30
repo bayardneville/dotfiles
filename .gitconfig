@@ -27,6 +27,11 @@
   # Commit
   c = commit
   cm = commit -m
+  ca = commit --amend
+  can = commit --amend --no-edit
+
+  # Push
+  pf = push -f
   pn = !git push -u origin HEAD
 
   # Reset
