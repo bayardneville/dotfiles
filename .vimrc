@@ -20,7 +20,7 @@ set incsearch
 set laststatus=2
 set lazyredraw
 set list
-set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
+set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:␣,trail:·
 set mouse=a
 set noswapfile
 set path=.,,**
@@ -35,7 +35,7 @@ set softtabstop=-1
 set tags=./tags;,tags;
 set ttymouse=sgr
 set wildcharm=<c-z>
-set wildignore+=tags,*.pyc,*_py.html,*/apache_airflow/logs/*
+set wildignore+=tags,*.pyc,*/__pycache__/,*_py.html,*/venv/*
 set wildignorecase
 set wildmenu
 
@@ -104,8 +104,8 @@ nnoremap <leader>, #``cgN
 
 " git
 command! -range GB echo join(systemlist("git -C " . shellescape(expand('%:p:h')) . " blame -L <line1>,<line2> " . expand('%:t')), "\n")
-" open current file in github on master branch
-command! GH echo system("open https://$(git remote -v  | sed -rn -e '1s#.*@(.*:.*)\\.git.*#\\1#' -e '1s#:#/#p')/blob/master/$(git -C " . shellescape(expand('%:p:h')) . " ls-files --full-name " . expand('%:t') . ")")
+" open current file in github on master/main branch
+command! GH echo system("open https://$(git remote -v  | sed -rn -e '1s#.*@(.*:.*)\\.git.*#\\1#' -e '1s#:#/#p')/blob/$(if git show-ref --verify --quiet refs/heads/master; then echo master; else echo main; fi)/$(git -C " . shellescape(expand('%:p:h')) . " ls-files --full-name " . expand('%:t') . ")")
 
 " AUTOCOMMANDS
 augroup Indentation
@@ -133,7 +133,7 @@ augroup Linting
   autocmd BufWritePost *.py,*.rb lgetexpr system(&makeprg . ' ' . expand('<afile>'))
 augroup END
 
-" commented out since conflicts with vim-qf
+" commented out since conflicts with vim-qf, TODO: disable when vim-qf is detected
 " automatically open location/quickfix window when populated
 " augroup Quickfix
 "   autocmd!
