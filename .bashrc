@@ -2,7 +2,10 @@ alias ll='ls -lhF'
 alias la='ls -lahF'
 alias l.='ls -ld .*'
 alias g='git'
+
 alias av='. venv/bin/activate'
+alias dv='deactivate'
+
 # quick look from cli
 alias ql='qlmanage -p "$@"'
 
@@ -50,11 +53,15 @@ magenta="\[\e[0;35m\]"
 violet="\[\e[1;35m\]"
 cyan="\[\e[0;36m\]"
 
-function timer_start {
+mkv() {
+    virtualenv -p "$(brew --prefix)/opt/python@${1}/libexec/bin/python" venv && . venv/bin/activate
+}
+
+timer_start() {
     timer=${timer:-$SECONDS}
 }
 
-function timer_stop {
+timer_stop() {
     timer_show=$(($SECONDS - $timer))
     if ((timer_show < 120)); then
         timer_show="${timer_show}s"
@@ -72,7 +79,7 @@ function timer_stop {
 
 trap 'timer_start' DEBUG
 
-function git_color {
+git_color() {
     local STATUS="$(git status --porcelain 2> /dev/null)"
 
     if [ ${?} -eq 0 ]; then
@@ -90,12 +97,12 @@ function git_color {
     return 1
 }
 
-function git_branch {
+git_branch() {
     branch="$(git branch --no-color 2> /dev/null | grep "*" 2> /dev/null)"
     PS1+="${branch#\*}"
 }
 
-function __prompt_command {
+__prompt_command() {
     local EXIT="${?}"
     timer_stop
 
