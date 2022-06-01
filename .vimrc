@@ -39,6 +39,10 @@ set wildignore+=tags,*.pyc,*/__pycache__/,*_py.html,*/venv/*
 set wildignorecase
 set wildmenu
 
+" disable since it prevents tagging venv since it is in wildignore
+" the leading * in */venv/** does not match ./venv/ in project root when passed to ctags
+let g:gutentags_ctags_exclude_wildignore = 1
+
 " MAPPINGS
 
 " scroll visually through wrapped lines
