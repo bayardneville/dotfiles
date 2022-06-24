@@ -32,7 +32,7 @@ set showmatch
 set showmode
 set smartcase
 set softtabstop=-1
-set tags=./tags;,tags;
+set tags=./tags;
 set ttymouse=sgr
 set wildcharm=<c-z>
 set wildignore+=tags,*.pyc,*/__pycache__/,*_py.html,*/venv/*

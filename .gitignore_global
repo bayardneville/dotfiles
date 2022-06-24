@@ -1,6 +1,8 @@
 .DS_Store
 .ignore
+.notags
 tags
 tags.lock
 tags.temp
 pytest_cache/
+venv/
