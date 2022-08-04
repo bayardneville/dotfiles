@@ -106,6 +106,9 @@ nnoremap <leader>; *``cgn
 " backward
 nnoremap <leader>, #``cgN
 
+" remove trailing whitespace
+nnoremap <leader>w :%s/ \+$//<cr>:v/\_s*\S/d_<cr>
+
 " git
 command! -range GB echo join(systemlist("git -C " . shellescape(expand('%:p:h')) . " blame -L <line1>,<line2> " . expand('%:t')), "\n")
 " open current file in github on master/main branch
