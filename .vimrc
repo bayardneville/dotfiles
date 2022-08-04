@@ -107,7 +107,7 @@ nnoremap <leader>; *``cgn
 nnoremap <leader>, #``cgN
 
 " remove trailing whitespace
-nnoremap <leader>w :%s/ \+$//<cr>:v/\_s*\S/d_<cr>
+nnoremap <leader>w :%s/ \+$//e<cr>:v/\_s*\S/d_<cr>
 
 " git
 command! -range GB echo join(systemlist("git -C " . shellescape(expand('%:p:h')) . " blame -L <line1>,<line2> " . expand('%:t')), "\n")
