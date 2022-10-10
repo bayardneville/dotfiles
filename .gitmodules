@@ -10,3 +10,6 @@
 [submodule ".vim/pack/plugins/start/vim-cool"]
 	path = .vim/pack/plugins/start/vim-cool
 	url = git@github.com:romainl/vim-cool.git
+[submodule ".vim/pack/plugins/start/vim-sneak"]
+	path = .vim/pack/plugins/start/vim-sneak
+	url = git@github.com:justinmk/vim-sneak.git
