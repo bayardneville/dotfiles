@@ -9,7 +9,8 @@ set autoindent
 set autoread
 set backspace=indent,eol,start
 set clipboard^=unnamed
-set complete+=d
+set complete-=i
+set complete+=]
 set cursorline
 set expandtab
 set grepprg=ag\ --vimgrep
