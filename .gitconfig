@@ -1,20 +1,32 @@
 [user]
   name = Bayard Neville
+[core]
+  excludesfile = ~/.gitignore_global
 [color]
   ui = auto
   interactive = auto
+[pull]
+  ff = only
 [merge]
   tool = vimdiff
+[diff]
+  compactionHeuristic = 1
+[pager]
+  log = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | less
+  show = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | less
+  diff = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | less
+[interactive]
+  diffFilter = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight
 [alias]
   # Status
-  s = status
+  s = status -sb
   l = log
-  sh = show --name-only --color-moved
-  shd = show --pretty='' --color-moved
-  d = diff --color-moved
-  db = !git diff --color-moved $(git merge-base --fork-point master)
-  dh = diff --color-moved HEAD
-  ds = diff --color-moved --staged
+  sh = show --stat
+  shd = show
+  d = diff
+  db = !git diff $(git merge-base --fork-point master)
+  dh = diff HEAD
+  ds = diff --staged
 
   # Branch
   b = branch
@@ -23,6 +35,7 @@
 
   # Staging
   a = add
+  as = !git add -A && git s
 
   # Commit
   c = commit
@@ -31,7 +44,7 @@
   can = commit --amend --no-edit
 
   # Push
-  pf = push -f
+  pf = push --force-with-lease
   pn = !git push -u origin HEAD
 
   # Reset
@@ -42,17 +55,5 @@
 
   # Misc
   h = help
-[core]
-  excludesfile = ~/.gitignore_global
-[diff]
-  compactionHeuristic = 1
-[pager]
-  log = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | less
-  show = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | less
-  diff = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | less
-[interactive]
-  diffFilter = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight
-[pull]
-  ff = only
 [include]
   path = .lgitconfig
