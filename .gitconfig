@@ -36,6 +36,7 @@
   # Staging
   a = add
   as = !git add -A && git s
+  r = reset
 
   # Commit
   c = commit
@@ -47,11 +48,11 @@
   pf = push --force-with-lease
   pn = !git push -u origin HEAD
 
-  # Reset
-  r = reset
-
   # Cleanup
   cleanup = !git checkout master || git checkout main && git pull && git remote prune origin && git prune && git gc && git b -vv | grep ': gone]' | awk '{print $1}' | xargs git branch -D && git branch --list
+
+  # Submodule
+  smu = submodule update --init --recursive
 
   # Misc
   h = help
