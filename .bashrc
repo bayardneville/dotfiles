@@ -42,17 +42,25 @@ else
   export PROMPT_COMMAND="${PROMPT_COMMAND} && __prompt_command"
 fi
 
-# prompt with timer setup and previous command setup
+# color variables
+# wrapped in brackets to mark as zero-length: "\[$color\]"
 normal="\[\e[0m\]"
-red="\[\e[0;31m\]"
-orange="\[\e[1;31m\]"
-green="\[\e[0;32m\]"
-yellow="\[\e[0;33m\]"
-blue="\[\e[0;34m\]"
-magenta="\[\e[0;35m\]"
-violet="\[\e[1;35m\]"
-cyan="\[\e[0;36m\]"
 
+red="\[\e[31m\]"
+green="\[\e[32m\]"
+yellow="\[\e[33m\]"
+blue="\[\e[34m\]"
+magenta="\[\e[35m\]"
+cyan="\[\e[36m\]"
+
+bred="\[\e[91m\]"
+bgreen="\[\e[92m\]"
+byellow="\[\e[93m\]"
+bblue="\[\e[94m\]"
+bmagenta="\[\e[95m\]"
+bcyan="\[\e[96m\]"
+
+# prompt with timer, previous command status, git, venv
 mkv() {
     virtualenv -p "$(brew --prefix)/opt/python@${1}/libexec/bin/python" venv && . venv/bin/activate
 }
