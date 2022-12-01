@@ -25,6 +25,7 @@ set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:␣,trail:·
 set mouse=a
 set noswapfile
 set path=.,,**
+set regexpengine=0
 set ruler
 set scrolloff=1
 set shiftround
@@ -129,7 +130,7 @@ augroup END
 
 augroup LineLength
   autocmd!
-  autocmd FileType python setlocal colorcolumn=101
+  autocmd FileType python setlocal colorcolumn=89
   autocmd FileType ruby setlocal colorcolumn=121
 augroup END
 
