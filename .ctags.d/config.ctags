@@ -1,5 +1,6 @@
 --recurse=yes
 --exclude=.cache
---exclude=.git
+--exclude=.mypy_cache/*
 --exclude=log/*
+--exclude=*.json
 --python-kinds=-i
