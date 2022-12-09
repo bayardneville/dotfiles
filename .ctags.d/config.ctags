@@ -3,4 +3,3 @@
 --exclude=.mypy_cache/*
 --exclude=log/*
 --exclude=*.json
---python-kinds=-i
