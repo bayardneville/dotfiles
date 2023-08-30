@@ -1,8 +1,10 @@
 .DS_Store
+.envrc
 .ignore
 .notags
 tags
 tags.lock
 tags.temp
+tags.temp.tmp
 pytest_cache/
 venv/

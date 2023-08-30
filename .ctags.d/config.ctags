@@ -1,5 +1,6 @@
 --recurse=yes
 --exclude=.cache
 --exclude=.mypy_cache/*
+--exclude=.tox/*
 --exclude=log/*
 --exclude=*.json

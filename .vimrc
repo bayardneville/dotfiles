@@ -130,7 +130,7 @@ augroup END
 
 augroup LineLength
   autocmd!
-  autocmd FileType python setlocal colorcolumn=89
+  autocmd FileType python setlocal colorcolumn=101
   autocmd FileType ruby setlocal colorcolumn=121
 augroup END
 
