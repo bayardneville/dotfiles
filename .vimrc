@@ -131,6 +131,9 @@ augroup END
 augroup LineLength
   autocmd!
   autocmd FileType python setlocal colorcolumn=101
+  autocmd FileType python setlocal textwidth=100
+  autocmd FileType python setlocal formatoptions-=t
+  autocmd FileType python setlocal formatoptions+=croql
   autocmd FileType ruby setlocal colorcolumn=121
 augroup END
 
