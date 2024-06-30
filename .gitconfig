@@ -16,7 +16,7 @@
   show = $(brew --prefix)/share/git-core/contrib/diff-highlight/diff-highlight | less
   diff = $(brew --prefix)/share/git-core/contrib/diff-highlight/diff-highlight | less
 [interactive]
-  diffFilter = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight
+  diffFilter = $(brew --prefix)/share/git-core/contrib/diff-highlight/diff-highlight
 [alias]
   # Status
   s = status -sb
@@ -47,6 +47,9 @@
   # Push
   pf = push --force-with-lease
   pn = !git push -u origin HEAD
+
+  # Cherry-pick
+  cp = cherry-pick
 
   # Cleanup
   cleanup = !git checkout master || git checkout main && git pull && git remote prune origin && git prune && git gc && git b -vv | grep ': gone]' | awk '{print $1}' | xargs git branch -D && git branch --list
