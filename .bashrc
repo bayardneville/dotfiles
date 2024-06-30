@@ -11,6 +11,7 @@ alias ql='qlmanage -p "$@"'
 
 bind '"\e[A":history-search-backward'
 bind '"\e[B":history-search-forward'
+bind 'set revert-all-at-newline on'
 
 export BASH_SILENCE_DEPRECATION_WARNING=1
 export CDPATH=./:~/:~/dev/:~/Documents/dev/
