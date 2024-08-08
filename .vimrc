@@ -113,8 +113,10 @@ nnoremap <leader>w :%s/ \+$//e<cr>:v/\_s*\S/d_<cr>
 
 " git
 command! -range GB echo join(systemlist("git -C " . shellescape(expand('%:p:h')) . " blame -L <line1>,<line2> " . expand('%:t')), "\n")
-" open current file in github on master/main branch
+" open current file/line in github on master/main branch
 command! GH echo system("open https://$(git remote -v  | sed -rn -e '1s#.*@(.*:.*)\\.git.*#\\1#' -e '1s#:#/#p')/blob/$(if git show-ref --verify --quiet refs/heads/master; then echo master; else echo main; fi)/$(git -C " . shellescape(expand('%:p:h')) . " ls-files --full-name " . expand('%:t') . ")#L" . line('.'))
+" open blame for current file/line in github on master/main branch
+command! GHB echo system("open https://$(git remote -v  | sed -rn -e '1s#.*@(.*:.*)\\.git.*#\\1#' -e '1s#:#/#p')/blame/$(if git show-ref --verify --quiet refs/heads/master; then echo master; else echo main; fi)/$(git -C " . shellescape(expand('%:p:h')) . " ls-files --full-name " . expand('%:t') . ")#L" . line('.'))
 
 " AUTOCOMMANDS
 augroup Indentation
