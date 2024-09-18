@@ -87,15 +87,6 @@ nnoremap <leader>k :cprevious<cr>
 nnoremap <leader>J :lnext<cr>
 nnoremap <leader>K :lprevious<cr>
 
-" grep
-nnoremap <leader>g :Grep<space>
-nnoremap <silent> <leader>G :Grep<space> <c-r><c-w><cr>
-xnoremap <silent> ,G :<c-u>let cmd = "Grep " . visual#GetSelection() <bar>
-                        \ call histadd("cmd", cmd) <bar>
-                        \ execute cmd<cr>
-" this does NOT allow passing of additional flags to grepprg
-command! -nargs=+ -complete=file_in_path -bar Grep cgetexpr system(&grepprg . ' ''<args>''')
-
 " quick search replace
 " paragraph
 nnoremap <leader>r :'{,'}s/\<<c-r>=expand('<cword>')<cr>\>/
@@ -110,6 +101,18 @@ nnoremap <leader>, #``cgN
 
 " remove trailing whitespace
 nnoremap <leader>w :%s/ \+$//e<cr>:v/\_s*\S/d_<cr>
+
+" grep
+nnoremap <leader>g :Grep<space>
+nnoremap <silent> <leader>G :Grep<space> <c-r><c-w><cr>
+xnoremap <silent> ,G :<c-u>let cmd = "Grep " . visual#GetSelection() <bar>
+                        \ call histadd("cmd", cmd) <bar>
+                        \ execute cmd<cr>
+" this does NOT allow passing of additional flags to grepprg
+command! -nargs=+ -complete=file_in_path -bar Grep cgetexpr system(&grepprg . ' ''<args>''')
+
+" fix unintentional capital w to save
+command! W write
 
 " git
 command! -range GB echo join(systemlist("git -C " . shellescape(expand('%:p:h')) . " blame -L <line1>,<line2> " . expand('%:t')), "\n")
