@@ -13,7 +13,7 @@ set complete-=i
 set complete+=]
 set cursorline
 set expandtab
-set grepprg=ag\ --vimgrep
+set grepprg=ag\ --vimgrep\ --hidden
 set hidden
 set hlsearch
 set ignorecase
