@@ -102,6 +102,16 @@ nnoremap <leader>, #``cgN
 " remove trailing whitespace
 nnoremap <leader>w :%s/ \+$//e<cr>:v/\_s*\S/d_<cr>
 
+" chat with augment llm
+nnoremap <leader>c :Augment chat<cr>
+vnoremap <leader>c :Augment chat<cr>
+
+nnoremap <leader>an :Augment chat-new<cr>
+vnoremap <leader>an :Augment chat-new<cr>
+
+nnoremap <leader>at :Augment chat-toggle<cr>
+vnoremap <leader>at :Augment chat-toggle<cr>
+
 " grep
 nnoremap <leader>g :Grep<space>
 nnoremap <silent> <leader>G :Grep<space> <c-r><c-w><cr>
