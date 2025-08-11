@@ -182,3 +182,8 @@ augroup END
 
 " COLORSCHEME
 colorscheme apprentice
+
+" LOCAL
+if filereadable(expand("~/.lvimrc"))
+  source ~/.lvimrc
+endif
