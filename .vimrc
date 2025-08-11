@@ -47,6 +47,10 @@ let g:gutentags_project_root = ['venv']
 
 " MAPPINGS
 
+" no ex mode
+nnoremap Q @Q
+nnoremap gQ <nop>
+
 " scroll visually through wrapped lines
 nnoremap j gj
 nnoremap k gk
@@ -62,6 +66,8 @@ nnoremap ` '
 nnoremap <leader>f :find *
 nnoremap <leader>s :sfind *
 nnoremap <leader>v :vert sfind *
+" edit in current dir
+nnoremap <leader>e :edit <c-r>=expand('%:p:h').'/'<cr>
 
 " buffer
 nnoremap <leader>b :buffer *
