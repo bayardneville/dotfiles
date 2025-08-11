@@ -48,8 +48,11 @@ let g:gutentags_project_root = ['venv']
 " MAPPINGS
 
 " no ex mode
-nnoremap Q @Q
+nnoremap Q @q
 nnoremap gQ <nop>
+
+" no definition lookup
+nnoremap <s-k> <nop>
 
 " scroll visually through wrapped lines
 nnoremap j gj
