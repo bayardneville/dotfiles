@@ -65,6 +65,9 @@ map <leader>h :nohlsearch<cr>
 nnoremap ' `
 nnoremap ` '
 
+" copy path to system clipboard
+nnoremap <leader>y :let @+=expand('%:~')<cr>
+
 " file
 nnoremap <leader>f :find *
 nnoremap <leader>s :sfind *

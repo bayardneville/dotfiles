@@ -2,6 +2,7 @@
 .envrc
 .ignore
 .notags
+settings.local.json
 tags
 tags.lock
 tags.temp

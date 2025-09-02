@@ -9,6 +9,8 @@ alias dv='deactivate'
 # quick look from cli
 alias ql='qlmanage -p "$@"'
 
+alias td='vim ~/Desktop/todo.md'
+
 bind '"\e[A":history-search-backward'
 bind '"\e[B":history-search-forward'
 bind 'set revert-all-at-newline on'
