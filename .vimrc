@@ -59,6 +59,7 @@ nnoremap j gj
 nnoremap k gk
 
 map <space> \
+map <s-space> \
 map <leader>h :nohlsearch<cr>
 
 " prioritize jump to exact mark
