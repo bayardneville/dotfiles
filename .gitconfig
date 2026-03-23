@@ -52,7 +52,7 @@
   cp = cherry-pick
 
   # Cleanup
-  cleanup = !git checkout master || git checkout main && git pull && git remote prune origin && git prune && git gc && git b -vv | grep ': gone]' | awk '{print $1}' | xargs git branch -D && git branch --list
+  cleanup = !git checkout master || git checkout main && git pull && git remote prune origin && git prune && git gc && git branch -vv | grep ': gone]' | grep -v '^[+*]' | awk '{print $1}' | xargs git branch -D && git branch --list
 
   # Submodule
   smu = submodule update --init --recursive
