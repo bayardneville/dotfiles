@@ -13,6 +13,3 @@
 [submodule ".vim/pack/plugins/start/vim-sneak"]
 	path = .vim/pack/plugins/start/vim-sneak
 	url = git@github.com:justinmk/vim-sneak.git
-[submodule ".vim/pack/plugins/start/augment.vim"]
-	path = .vim/pack/plugins/start/augment.vim
-	url = git@github.com:augmentcode/augment.vim.git

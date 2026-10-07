@@ -2,6 +2,7 @@ alias ll='ls -lhF'
 alias la='ls -lahF'
 alias l.='ls -ld .*'
 alias g='git'
+alias c='claude'
 
 alias av='. venv/bin/activate'
 alias dv='deactivate'
@@ -39,10 +40,8 @@ shopt -s cdspell
 # only complete directories for cd
 complete -d cd
 
-if [[ $0 != -bash || -z ${PROMPT_COMMAND} ]]; then
-  export PROMPT_COMMAND="__prompt_command"
-else
-  export PROMPT_COMMAND="${PROMPT_COMMAND} && __prompt_command"
+if [[ $PROMPT_COMMAND != *__prompt_command* ]]; then
+  export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND; }__prompt_command"
 fi
 
 # color variables
@@ -64,10 +63,6 @@ bmagenta="\[\e[95m\]"
 bcyan="\[\e[96m\]"
 
 # prompt with timer, previous command status, git, venv
-mkv() {
-    virtualenv -p "$(brew --prefix)/opt/python@${1}/libexec/bin/python" venv && . venv/bin/activate
-}
-
 timer_start() {
     timer=${timer:-$SECONDS}
 }

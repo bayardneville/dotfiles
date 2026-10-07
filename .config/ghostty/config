@@ -1,0 +1,6 @@
+shell-integration = bash
+font-feature = -liga
+font-feature = -dlig
+command = /opt/homebrew/bin/bash --login
+window-inherit-working-directory = false
+tab-inherit-working-directory = false
