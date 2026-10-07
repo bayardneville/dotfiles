@@ -46,7 +46,7 @@ shopt -s cdspell
 complete -d cd
 
 if [[ $PROMPT_COMMAND != *__prompt_command* ]]; then
-  export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND; }__prompt_command"
+    export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND; }__prompt_command"
 fi
 
 # color variables
@@ -137,8 +137,8 @@ fi
 
 # Git tab completion
 if [ -f ~/.git-completion.bash ]; then
-  . ~/.git-completion.bash
+    . ~/.git-completion.bash
 
-  # Tab completion git aliased to g
-  __git_complete g __git_main
+    # Tab completion git aliased to g
+    __git_complete g __git_main
 fi
