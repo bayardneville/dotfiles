@@ -12,6 +12,11 @@ alias ql='qlmanage -p "$@"'
 
 alias td='vim ~/Desktop/todo.md'
 
+gclone() {
+    git clone "git@github.com:bayardneville/${1}.git" ~/dev/"${1}" \
+        && cd ~/dev/"${1}"
+}
+
 bind '"\e[A":history-search-backward'
 bind '"\e[B":history-search-forward'
 bind 'set revert-all-at-newline on'
