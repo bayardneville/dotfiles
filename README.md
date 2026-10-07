@@ -1,3 +1,9 @@
+Prerequisites:
+```
+brew install bash the_silver_searcher universal-ctags
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
 Installation instructions:
 ```
 git clone --recurse-submodules git@github.com:bayardneville/dotfiles.git ~/.dotfiles
