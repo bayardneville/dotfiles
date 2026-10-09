@@ -5,3 +5,7 @@ font-feature = -calt
 command = /opt/homebrew/bin/bash --login
 window-inherit-working-directory = false
 tab-inherit-working-directory = false
+
+keybind = global:ctrl+grave_accent=toggle_quick_terminal
+quick-terminal-animation-duration = 0
+quick-terminal-size = 686px,1136px
