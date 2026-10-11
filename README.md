@@ -10,6 +10,8 @@ git clone --recurse-submodules git@github.com:bayardneville/dotfiles.git ~/.dotf
 ln -sv ~/.dotfiles/{.bash_profile,.bashrc,.ctags.d,.git-completion.bash,.gitconfig,.gitignore_global,.hushlogin,.vim,.vimrc} ~
 mkdir -p ~/.config
 ln -sv ~/.dotfiles/.config/ghostty ~/.config/ghostty
+mkdir -p ~/.claude
+ln -sv ~/.dotfiles/.claude/statusline-command.sh ~/.claude/statusline-command.sh
 uv tool install ruff
 ```
 
