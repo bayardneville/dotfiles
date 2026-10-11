@@ -9,3 +9,5 @@ tab-inherit-working-directory = false
 keybind = global:ctrl+grave_accent=toggle_quick_terminal
 quick-terminal-animation-duration = 0
 quick-terminal-size = 686px,1136px
+
+initial-window = false
